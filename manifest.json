@@ -1,0 +1,16 @@
+{
+  "name": "Advanced search",
+  "description": "Advanced search all search engine",
+  "version": "0.1",
+  "permissions": ["contextMenus"],
+  "icons": {
+      "16" : "icon-bitty.png",
+      "48" : "icon-small.png",
+      "128": "icon-large.png"
+  },
+  "background": {
+    "persistent": false,
+    "scripts": ["main_script.js"]
+  },
+  "manifest_version": 2
+}
