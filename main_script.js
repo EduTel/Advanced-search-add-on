@@ -6,7 +6,6 @@ function search_click(info,tab){
     //openInNewTab(info);
     //var searchstring = info.selectionText;
     //alert(JSON.stringify(info,null,"\t"));
-
     chrome.tabs.create({url: info});
     //alert(info);
     //console.log("__________________________0");
@@ -30,7 +29,7 @@ function search_click(info,tab){
     var Herramientas2 = chrome.contextMenus.create({"id"   : "Herramientas_googleTraducir","title": "Traducir", "parentId": Herramientas,contexts:["selection"]});
     var Herramientas3 = chrome.contextMenus.create({"id"   : "Herramientas_googleMaps","title": "Google Maps", "parentId": Herramientas,contexts:["selection"]});
     var Herramientas4 = chrome.contextMenus.create({"id"   : "Herramientas_duckduckgoQr","title": "Duckduckgo qrcode", "parentId": Herramientas,contexts:["selection"]});
-    var Herramientas4 = chrome.contextMenus.create({"id"   : "Herramientas_duckduckgoFiglet ","title": "Duckduckgo Figlet", "parentId": Herramientas,contexts:["selection"]});
+    var Herramientas5 = chrome.contextMenus.create({"id"   : "Herramientas_duckduckgoFiglet","title": "Duckduckgo Figlet", "parentId": Herramientas,contexts:["selection"]});
     //_________________________________________________________________________Capturar eventos de todos los contextMenus
     chrome.contextMenus.onClicked.addListener(function(info, tab) {
         menuItemId=info.menuItemId;
