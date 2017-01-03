@@ -12,32 +12,11 @@ function search_click(info,tab){
     //console.log(JSON.stringify(info, null, '\t'));
     //console.log("__________________________1");
 }
-/*
-var clickHandler = function(e) {
-    var url = e.pageUrl;
-    var buzzPostUrl = "http://www.google.com/buzz/post?";
-    if (e.selectionText) {
-        // The user selected some text, put this in the message.
-        buzzPostUrl += "message=" + encodeURI(e.selectionText) + "&";
-    }
-    if (e.mediaType === "image") {
-        buzzPostUrl += "imageurl=" + encodeURI(e.srcUrl) + "&";
-    }
-    if (e.linkUrl) {
-        // The user wants to buzz a link.
-        url = e.linkUrl;
-    }
-    buzzPostUrl += "url=" + encodeURI(url);
-    // Open the page up.
-    chrome.tabs.create({"url" : buzzPostUrl });
-};
-*/
-
 
 //chrome.runtime.onInstalled.addListener(function() {
     //_________________________________________________________________________Busquedas
     var Busquedas  = chrome.contextMenus.create({"title": "Busquedas",contexts:["selection"]});
-    var Busquedas1 = chrome.contextMenus.create({"id"   : "Busquedas_youtube","title": "Buscar en YouTube", "parentId": Busquedas,contexts:["selection"]/*,"onclick" : clickHandler}*/);
+    var Busquedas1 = chrome.contextMenus.create({"id"   : "Busquedas_youtube","title": "Buscar en YouTube", "parentId": Busquedas,contexts:["selection"]/*,"onclick" : clickHandler*/});
     var Busquedas2 = chrome.contextMenus.create({"id"   : "Busquedas_wikipedia","title": "Buscar wikipedia", "parentId": Busquedas,contexts:["selection"]});
     //_________________________________________________________________________Multimedia
     var multimadia  = chrome.contextMenus.create({"title": "Multimedia",contexts:["selection"]});
@@ -54,7 +33,7 @@ var clickHandler = function(e) {
         //alert(JSON.stringify(prefijo,null,"\t"));
         if(prefijo=='Busquedas'){
             if (menuItemId == "Busquedas_youtube") {
-                 search_click("https://duckduckgo.com/?q=%21translate+"+info.selectionText);
+                 search_click("https://duckduckgo.com/?q=%21yt+"+info.selectionText+"&t=h_");
             }else if(menuItemId == "Busquedas_wikipedia"){
                 search_click("https://duckduckgo.com/?q=%21wes+"+info.selectionText+"&t=h");
             }else if(menuItemId == "Busquedas_wikipedia"){
