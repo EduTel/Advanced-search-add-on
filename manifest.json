@@ -2,7 +2,10 @@
   "name": "Advanced search",
   "description": "Advanced search all search engine",
   "version": "0.1",
-  "permissions": ["contextMenus"],
+  "permissions": [
+      "tabs",
+      "contextMenus"
+  ],
   "icons": {
       "16" : "img/icon-bitty.png",
       "48" : "img/icon-small.png",

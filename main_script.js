@@ -12,18 +12,38 @@ function search_click(info,tab){
     //console.log(JSON.stringify(info, null, '\t'));
     //console.log("__________________________1");
 }
+var clickHandler = function(e) {
+    var url = e.pageUrl;
+    var buzzPostUrl = "http://www.google.com/buzz/post?";
+    if (e.selectionText) {
+        // The user selected some text, put this in the message.
+        buzzPostUrl += "message=" + encodeURI(e.selectionText) + "&";
+    }
+    if (e.mediaType === "image") {
+        buzzPostUrl += "imageurl=" + encodeURI(e.srcUrl) + "&";
+    }
+    if (e.linkUrl) {
+        // The user wants to buzz a link.
+        url = e.linkUrl;
+    }
+    buzzPostUrl += "url=" + encodeURI(url);
+    // Open the page up.
+    chrome.tabs.create({"url" : buzzPostUrl });
+};
+
+
 //chrome.runtime.onInstalled.addListener(function() {
     //_________________________________________________________________________Busquedas
-    var Busquedas  = chrome.contextMenus.create({"title": "Busquedas"});
-    var Busquedas1 = chrome.contextMenus.create({"id"   : "Busquedas_youtube","title": "Buscar en YouTube", "parentId": Busquedas});
-    var Busquedas2 = chrome.contextMenus.create({"id"   : "Busquedas_wikipedia","title": "Buscar wikipedia", "parentId": Busquedas});
+    var Busquedas  = chrome.contextMenus.create({"title": "Busquedas",contexts:["selection"]});
+    var Busquedas1 = chrome.contextMenus.create({"id"   : "Busquedas_youtube","title": "Buscar en YouTube", "parentId": Busquedas,contexts:["selection"],"onclick" : clickHandler});
+    var Busquedas2 = chrome.contextMenus.create({"id"   : "Busquedas_wikipedia","title": "Buscar wikipedia", "parentId": Busquedas,contexts:["selection"],"onclick" : clickHandler});
     //_________________________________________________________________________Multimedia
     var multimadia  = chrome.contextMenus.create({"title": "Multimedia"});
-    var multimadia1 = chrome.contextMenus.create({"id"   : "Multimedia_googleImagenes","title": "Imagenes en Google", "parentId": multimadia});
+    var multimadia1 = chrome.contextMenus.create({"id"   : "Multimedia_googleImagenes","title": "Imagenes en Google", "parentId": multimadia,contexts:["selection"],"onclick" : clickHandler});
     //_________________________________________________________________________Herramientas
     var Herramientas  = chrome.contextMenus.create({"title": "Herramientas"});
-    var Herramientas1 = chrome.contextMenus.create({"id"   : "Herramientas_duckduckgoHash","title": "Buscar Hash", "parentId": Herramientas});
-    var Herramientas2 = chrome.contextMenus.create({"id"   : "Herramientas_googleTraducir","title": "Traducir", "parentId": Herramientas});
+    var Herramientas1 = chrome.contextMenus.create({"id"   : "Herramientas_duckduckgoHash","title": "Buscar Hash", "parentId": Herramientas,contexts:["selection"],"onclick" : clickHandler});
+    var Herramientas2 = chrome.contextMenus.create({"id"   : "Herramientas_googleTraducir","title": "Traducir", "parentId": Herramientas,contexts:["selection"],"onclick" : clickHandler});
     //_________________________________________________________________________Capturar eventos de todos los contextMenus
     chrome.contextMenus.onClicked.addListener(function(info, tab) {
         menuItemId=info.menuItemId;
