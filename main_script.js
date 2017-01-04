@@ -31,14 +31,14 @@ function search_click(info,tab){
     var Herramientas4 = chrome.contextMenus.create({"id"   : "Herramientas_duckduckgoFiglet","title": "Duckduckgo Figlet", "parentId": Herramientas,contexts:["selection"]});
     //_________________________________________________________________________Herramientas Cifrado
     var Cifrado  = chrome.contextMenus.create({"title": "Cifrado",contexts:["selection"], "parentId": Herramientas});
-    var Cifrado1 = chrome.contextMenus.create({"id"   : "Cifrado_duckduckgoHash","title": "Buscar Hash", "parentId": Cifrado,contexts:["selection"]});
+    var Cifrado1 = chrome.contextMenus.create({"id"   : "Cifrado_duckduckgoHash","title": "Detectar Hash", "parentId": Cifrado,contexts:["selection"]});
     var Cifrado2 = chrome.contextMenus.create({"id"   : "Cifrado_duckduckgoMd5","title": "md5", "parentId": Cifrado,contexts:["selection"]});
     var Cifrado3 = chrome.contextMenus.create({"id"   : "Cifrado_duckduckgosha512","title": "sha512", "parentId": Cifrado,contexts:["selection"]});
     var Cifrado4 = chrome.contextMenus.create({"id"   : "Cifrado_duckduckgoSha","title": "Sha", "parentId": Cifrado,contexts:["selection"]});
     var Cifrado5 = chrome.contextMenus.create({"id"   : "Cifrado_duckduckgoSha224","title": "Sha224", "parentId": Cifrado,contexts:["selection"]});
     var Cifrado6 = chrome.contextMenus.create({"id"   : "Cifrado_duckduckgoSha256","title": "Sha256", "parentId": Cifrado,contexts:["selection"]});
     var Cifrado7 = chrome.contextMenus.create({"id"   : "Cifrado_duckduckgoSha384","title": "Sha384", "parentId": Cifrado,contexts:["selection"]}); 
-    var Cifrado8 = chrome.contextMenus.create({"id"   : "Cifrado_duckduckgo","title": "md5", "parentId": Cifrado,contexts:["selection"]});
+    //var Cifrado8 = chrome.contextMenus.create({"id"   : "Cifrado_duckduckgo","title": "md5", "parentId": Cifrado,contexts:["selection"]});
 
     //_________________________________________________________________________Capturar eventos de todos los contextMenus
     chrome.contextMenus.onClicked.addListener(function(info, tab) {
@@ -78,7 +78,7 @@ function search_click(info,tab){
             }else if (menuItemId == "Cifrado_duckduckgoMd5") {
                 search_click("https://duckduckgo.com/?q=md5+"+info.selectionText+"&t=h_&ia=answer");
             }else if(menuItemId == "Cifrado_duckduckgosha512"){
-                search_click("https://duckduckgo.com/?q=sha+"+info.selectionText+"&t=h_&ia=answer");
+                search_click("https://duckduckgo.com/?q=sha512+"+info.selectionText+"&t=h_&ia=answer");
             }else if(menuItemId == "Cifrado_duckduckgoSha"){
                 search_click("https://duckduckgo.com/?q=sha+"+info.selectionText+"&t=h_&ia=answer");
             }else if(menuItemId == "Cifrado_duckduckgoSha224"){
