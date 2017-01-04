@@ -16,13 +16,39 @@ var json_menus={
                         "duckduckgoQr"     : "Duckduckgo qrcode",
                         "duckduckgoFiglet" : "Duckduckgo Figlet",
                         "Cifrado":{
-                                    "Cifrado_duckduckgoHash"   : "Detectar Hash",
-                                    "Cifrado_duckduckgoMd5"    : "md5",
-                                    "Cifrado_duckduckgosha512" : "sha512",
-                                    "Cifrado_duckduckgoSha"    : "Sha",
-                                    "Cifrado_duckduckgoSha224" : "Sha224",
-                                    "Cifrado_duckduckgoSha256" : "Sha256",
-                                    "Cifrado_duckduckgoSha384" : "Sha384"
+                                    "duckduckgoHash"   : "Detectar Hash",
+                                    "duckduckgoMd5"    : "md5",
+                                    "duckduckgosha512" : "sha512",
+                                    "duckduckgoSha"    : "Sha",
+                                    "duckduckgoSha224" : "Sha224",
+                                    "duckduckgoSha256" : "Sha256",
+                                    "duckduckgoSha384" : "Sha384"
+                        }
+            }
+        },
+        "en":{
+             "Busquedas":{
+                        "wikipedia"                 : "wikipedia",
+                        "duckduckgoNationalgeograp" : "National Geographic"
+                        },
+            "Multimedia":{
+                        "youtube"            : "YouTube",
+                        "googleImagenes"     : "Google Images",
+                        "duckduckgoImagenes" : "Images Duckduckgo"
+            },
+            "Herramientas":{
+                        "googleTraducir"   : "Translate",
+                        "googleMaps"       : "Google Maps",
+                        "duckduckgoQr"     : "Duckduckgo qrcode",
+                        "duckduckgoFiglet" : "Duckduckgo Figlet",
+                        "Cifrado":{
+                                    "duckduckgoHash"   : "Detectar Hash",
+                                    "duckduckgoMd5"    : "md5",
+                                    "duckduckgosha512" : "sha512",
+                                    "duckduckgoSha"    : "Sha",
+                                    "duckduckgoSha224" : "Sha224",
+                                    "duckduckgoSha256" : "Sha256",
+                                    "duckduckgoSha384" : "Sha384"
                         }
             }
         }
@@ -45,54 +71,27 @@ for(categoria in json_menus["idiomas"]["es"]){
   let contador_menu1=chrome.contextMenus.create({"title": categoria,contexts:["selection"]});
   for(seccion1 in json_menus["idiomas"]["es"][categoria]){
     if( typeof json_menus["idiomas"]["es"][categoria][seccion1] === 'object' ){
-        let contador_menu3=chrome.contextMenus.create({"id" :contador_menu1+seccion1,"title": seccion1, "parentId": contador_menu1,contexts:["selection"]});
+        let contador_menu3=chrome.contextMenus.create({"id" :categoria+"_"+seccion1,"title": seccion1, "parentId": contador_menu1,contexts:["selection"]});
         for(seccion2 in json_menus["idiomas"]["es"][categoria][seccion1]){
-            let contador_menu4=chrome.contextMenus.create({"id" :contador_menu3+seccion2,"title": json_menus["idiomas"]["es"][categoria][seccion1][seccion2], "parentId": contador_menu3,contexts:["selection"]});
+            let contador_menu4=chrome.contextMenus.create({"id" :seccion1+"_"+seccion2,"title": json_menus["idiomas"]["es"][categoria][seccion1][seccion2], "parentId": contador_menu3,contexts:["selection"]});
         }
     }else{
-        let contador_menu2=chrome.contextMenus.create({"id" :contador_menu1+seccion1,"title": json_menus["idiomas"]["es"][categoria][seccion1], "parentId": contador_menu1,contexts:["selection"]});
+        let contador_menu2=chrome.contextMenus.create({"id" :categoria+"_"+seccion1,"title": json_menus["idiomas"]["es"][categoria][seccion1], "parentId": contador_menu1,contexts:["selection"]});
         console.log(seccion1);
     }
   }
 }
 //chrome.runtime.onInstalled.addListener(function() {
-    /*
-    //_________________________________________________________________________Busquedas
-    var Busquedas  = chrome.contextMenus.create({"title": "Busquedas",contexts:["selection"]});
-    var Busquedas1 = chrome.contextMenus.create({"id"   : "Busquedas_wikipedia","title": "wikipedia", "parentId": Busquedas,contexts:["selection"]});
-    var Busquedas2 = chrome.contextMenus.create({"id"   : "Busquedas_duckduckgoNationalgeograp","title": "National Geographic", "parentId": Busquedas,contexts:["selection"]});
-    //_________________________________________________________________________Multimedia
-    var multimadia  = chrome.contextMenus.create({"title": "Multimedia",contexts:["selection"]});
-    var multimadia1 = chrome.contextMenus.create({"id"   : "Multimedia_youtube","title": "YouTube", "parentId": multimadia,contexts:["selection"]});//,"onclick" : clickHandler
-    var multimadia2 = chrome.contextMenus.create({"id"   : "Multimedia_googleImagenes","title": "Imagenes en Google", "parentId": multimadia,contexts:["selection"]});
-    var multimadia3 = chrome.contextMenus.create({"id"   : "Multimedia_duckduckgoImagenes","title": "Imagenes en Duckduckgo", "parentId": multimadia,contexts:["selection"]});
-    //_________________________________________________________________________Herramientas
-    var Herramientas  = chrome.contextMenus.create({"title": "Herramientas",contexts:["selection"]});
-    var Herramientas1 = chrome.contextMenus.create({"id"   : "Herramientas_googleTraducir","title": "Traducir", "parentId": Herramientas,contexts:["selection"]});
-    var Herramientas2 = chrome.contextMenus.create({"id"   : "Herramientas_googleMaps","title": "Google Maps", "parentId": Herramientas,contexts:["selection"]});
-    var Herramientas3 = chrome.contextMenus.create({"id"   : "Herramientas_duckduckgoQr","title": "Duckduckgo qrcode", "parentId": Herramientas,contexts:["selection"]});
-    var Herramientas4 = chrome.contextMenus.create({"id"   : "Herramientas_duckduckgoFiglet","title": "Duckduckgo Figlet", "parentId": Herramientas,contexts:["selection"]});
-    //_________________________________________________________________________Herramientas Cifrado
-    var Cifrado  = chrome.contextMenus.create({"title": "Cifrado",contexts:["selection"], "parentId": Herramientas});
-    var Cifrado1 = chrome.contextMenus.create({"id"   : "Cifrado_duckduckgoHash","title": "Detectar Hash", "parentId": Cifrado,contexts:["selection"]});
-    var Cifrado2 = chrome.contextMenus.create({"id"   : "Cifrado_duckduckgoMd5","title": "md5", "parentId": Cifrado,contexts:["selection"]});
-    var Cifrado3 = chrome.contextMenus.create({"id"   : "Cifrado_duckduckgosha512","title": "sha512", "parentId": Cifrado,contexts:["selection"]});
-    var Cifrado4 = chrome.contextMenus.create({"id"   : "Cifrado_duckduckgoSha","title": "Sha", "parentId": Cifrado,contexts:["selection"]});
-    var Cifrado5 = chrome.contextMenus.create({"id"   : "Cifrado_duckduckgoSha224","title": "Sha224", "parentId": Cifrado,contexts:["selection"]});
-    var Cifrado6 = chrome.contextMenus.create({"id"   : "Cifrado_duckduckgoSha256","title": "Sha256", "parentId": Cifrado,contexts:["selection"]});
-    var Cifrado7 = chrome.contextMenus.create({"id"   : "Cifrado_duckduckgoSha384","title": "Sha384", "parentId": Cifrado,contexts:["selection"]}); 
-    //var Cifrado8 = chrome.contextMenus.create({"id"   : "Cifrado_duckduckgo","title": "md5", "parentId": Cifrado,contexts:["selection"]});
-    */
     //_________________________________________________________________________Capturar eventos de todos los contextMenus
     chrome.contextMenus.onClicked.addListener(function(info, tab) {
         menuItemId=info.menuItemId;
         prefijo=menuItemId.split('_',1);
         //alert(JSON.stringify(info,null,"\t"));
         //alert(JSON.stringify(prefijo,null,"\t"));
-        execute(prefijo,menuItemId);
+        execute(info,tab,prefijo,menuItemId);
     });
 //});
-function execute(categoria,seccion){
+function execute(info,tab,categoria,seccion){
     if(categoria=='Busquedas'){
         if(seccion == "Busquedas_wikipedia"){
             search_click("https://duckduckgo.com/?q=%21wes+"+info.selectionText+"&t=h");
