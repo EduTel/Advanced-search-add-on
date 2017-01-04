@@ -14,16 +14,16 @@ var json_menus={
                         "googleTraducir"   : "Traducir",
                         "googleMaps"       : "Google Maps",
                         "duckduckgoQr"     : "Duckduckgo qrcode",
-                        "duckduckgoFiglet" : "Duckduckgo Figlet"
-            },
-            "Cifrado":{
-                        "Cifrado_duckduckgoHash"   : "Detectar Hash",
-                        "Cifrado_duckduckgoMd5"    : "md5",
-                        "Cifrado_duckduckgosha512" : "sha512",
-                        "Cifrado_duckduckgoSha"    : "Sha",
-                        "Cifrado_duckduckgoSha224" : "Sha224",
-                        "Cifrado_duckduckgoSha256" : "Sha256",
-                        "Cifrado_duckduckgoSha384" : "Sha384"
+                        "duckduckgoFiglet" : "Duckduckgo Figlet",
+                        "Cifrado":{
+                                    "Cifrado_duckduckgoHash"   : "Detectar Hash",
+                                    "Cifrado_duckduckgoMd5"    : "md5",
+                                    "Cifrado_duckduckgosha512" : "sha512",
+                                    "Cifrado_duckduckgoSha"    : "Sha",
+                                    "Cifrado_duckduckgoSha224" : "Sha224",
+                                    "Cifrado_duckduckgoSha256" : "Sha256",
+                                    "Cifrado_duckduckgoSha384" : "Sha384"
+                        }
             }
         }
     }
@@ -40,14 +40,23 @@ function search_click(info,tab){
     chrome.tabs.create({url: info});
 }
 
+for(categoria in json_menus["idiomas"]["es"]){
+  console.log(categoria);
+  let contador_menu1=chrome.contextMenus.create({"title": categoria,contexts:["selection"]});
+  for(seccion in json_menus["idiomas"]["es"][categoria]){
+    let contador_menu2=chrome.contextMenus.create({"id" :contador_menu1+seccion,"title": json_menus["idiomas"]["es"][categoria][seccion], "parentId": contador_menu1,contexts:["selection"]});
+    console.log(seccion);
+  }
+}
 //chrome.runtime.onInstalled.addListener(function() {
+    /*
     //_________________________________________________________________________Busquedas
     var Busquedas  = chrome.contextMenus.create({"title": "Busquedas",contexts:["selection"]});
     var Busquedas1 = chrome.contextMenus.create({"id"   : "Busquedas_wikipedia","title": "wikipedia", "parentId": Busquedas,contexts:["selection"]});
     var Busquedas2 = chrome.contextMenus.create({"id"   : "Busquedas_duckduckgoNationalgeograp","title": "National Geographic", "parentId": Busquedas,contexts:["selection"]});
     //_________________________________________________________________________Multimedia
     var multimadia  = chrome.contextMenus.create({"title": "Multimedia",contexts:["selection"]});
-    var multimadia1 = chrome.contextMenus.create({"id"   : "Multimedia_youtube","title": "YouTube", "parentId": multimadia,contexts:["selection"]/*,"onclick" : clickHandler*/});
+    var multimadia1 = chrome.contextMenus.create({"id"   : "Multimedia_youtube","title": "YouTube", "parentId": multimadia,contexts:["selection"]});//,"onclick" : clickHandler
     var multimadia2 = chrome.contextMenus.create({"id"   : "Multimedia_googleImagenes","title": "Imagenes en Google", "parentId": multimadia,contexts:["selection"]});
     var multimadia3 = chrome.contextMenus.create({"id"   : "Multimedia_duckduckgoImagenes","title": "Imagenes en Duckduckgo", "parentId": multimadia,contexts:["selection"]});
     //_________________________________________________________________________Herramientas
@@ -66,7 +75,7 @@ function search_click(info,tab){
     var Cifrado6 = chrome.contextMenus.create({"id"   : "Cifrado_duckduckgoSha256","title": "Sha256", "parentId": Cifrado,contexts:["selection"]});
     var Cifrado7 = chrome.contextMenus.create({"id"   : "Cifrado_duckduckgoSha384","title": "Sha384", "parentId": Cifrado,contexts:["selection"]}); 
     //var Cifrado8 = chrome.contextMenus.create({"id"   : "Cifrado_duckduckgo","title": "md5", "parentId": Cifrado,contexts:["selection"]});
-
+    */
     //_________________________________________________________________________Capturar eventos de todos los contextMenus
     chrome.contextMenus.onClicked.addListener(function(info, tab) {
         menuItemId=info.menuItemId;
