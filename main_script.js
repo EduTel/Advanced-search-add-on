@@ -25,11 +25,21 @@ function search_click(info,tab){
     var multimadia3 = chrome.contextMenus.create({"id"   : "Multimedia_duckduckgoImagenes","title": "Imagenes en Duckduckgo", "parentId": multimadia,contexts:["selection"]});
     //_________________________________________________________________________Herramientas
     var Herramientas  = chrome.contextMenus.create({"title": "Herramientas",contexts:["selection"]});
-    var Herramientas1 = chrome.contextMenus.create({"id"   : "Herramientas_duckduckgoHash","title": "Buscar Hash", "parentId": Herramientas,contexts:["selection"]});
-    var Herramientas2 = chrome.contextMenus.create({"id"   : "Herramientas_googleTraducir","title": "Traducir", "parentId": Herramientas,contexts:["selection"]});
-    var Herramientas3 = chrome.contextMenus.create({"id"   : "Herramientas_googleMaps","title": "Google Maps", "parentId": Herramientas,contexts:["selection"]});
-    var Herramientas4 = chrome.contextMenus.create({"id"   : "Herramientas_duckduckgoQr","title": "Duckduckgo qrcode", "parentId": Herramientas,contexts:["selection"]});
-    var Herramientas5 = chrome.contextMenus.create({"id"   : "Herramientas_duckduckgoFiglet","title": "Duckduckgo Figlet", "parentId": Herramientas,contexts:["selection"]});
+    var Herramientas1 = chrome.contextMenus.create({"id"   : "Herramientas_googleTraducir","title": "Traducir", "parentId": Herramientas,contexts:["selection"]});
+    var Herramientas2 = chrome.contextMenus.create({"id"   : "Herramientas_googleMaps","title": "Google Maps", "parentId": Herramientas,contexts:["selection"]});
+    var Herramientas3 = chrome.contextMenus.create({"id"   : "Herramientas_duckduckgoQr","title": "Duckduckgo qrcode", "parentId": Herramientas,contexts:["selection"]});
+    var Herramientas4 = chrome.contextMenus.create({"id"   : "Herramientas_duckduckgoFiglet","title": "Duckduckgo Figlet", "parentId": Herramientas,contexts:["selection"]});
+    //_________________________________________________________________________Herramientas Cifrado
+    var Cifrado  = chrome.contextMenus.create({"title": "Cifrado",contexts:["selection"], "parentId": Herramientas});
+    var Cifrado1 = chrome.contextMenus.create({"id"   : "Cifrado_duckduckgoHash","title": "Buscar Hash", "parentId": Cifrado,contexts:["selection"]});
+    var Cifrado2 = chrome.contextMenus.create({"id"   : "Cifrado_duckduckgoMd5","title": "md5", "parentId": Cifrado,contexts:["selection"]});
+    var Cifrado3 = chrome.contextMenus.create({"id"   : "Cifrado_duckduckgosha512","title": "sha512", "parentId": Cifrado,contexts:["selection"]});
+    var Cifrado4 = chrome.contextMenus.create({"id"   : "Cifrado_duckduckgoSha","title": "Sha", "parentId": Cifrado,contexts:["selection"]});
+    var Cifrado5 = chrome.contextMenus.create({"id"   : "Cifrado_duckduckgoSha224","title": "Sha224", "parentId": Cifrado,contexts:["selection"]});
+    var Cifrado6 = chrome.contextMenus.create({"id"   : "Cifrado_duckduckgoSha256","title": "Sha256", "parentId": Cifrado,contexts:["selection"]});
+    var Cifrado7 = chrome.contextMenus.create({"id"   : "Cifrado_duckduckgoSha384","title": "Sha384", "parentId": Cifrado,contexts:["selection"]}); 
+    var Cifrado8 = chrome.contextMenus.create({"id"   : "Cifrado_duckduckgo","title": "md5", "parentId": Cifrado,contexts:["selection"]});
+
     //_________________________________________________________________________Capturar eventos de todos los contextMenus
     chrome.contextMenus.onClicked.addListener(function(info, tab) {
         menuItemId=info.menuItemId;
@@ -55,14 +65,28 @@ function search_click(info,tab){
                 search_click("https://duckduckgo.com/?q=%21ddgi+"+info.selectionText);
             }
         }else if(prefijo=='Herramientas'){
-            if (menuItemId == "Herramientas_duckduckgoHash") {
-                search_click("https://duckduckgo.com/?q=hash+"+info.selectionText+"&t=h_&ia=answer");
-            }else if(menuItemId == "Herramientas_googleMaps"){
+           if(menuItemId == "Herramientas_googleMaps"){
                 search_click("https://duckduckgo.com/?q=%21gmuk+"+info.selectionText);
             }else if(menuItemId == "Herramientas_duckduckgoQr"){
                 search_click("https://duckduckgo.com/?q=qrcode+"+info.selectionText+"&t=h_&ia=answer");
             }else if(menuItemId == "Herramientas_duckduckgoFiglet"){
                 search_click("https://duckduckgo.com/?q=figlet+"+info.selectionText+"&t=h_&ia=answer");
+            }
+        }else if(prefijo=='Cifrado'){
+             if (menuItemId == "Cifrado_duckduckgoHash") {
+                search_click("https://duckduckgo.com/?q=hash+"+info.selectionText+"&t=h_&ia=answer");
+            }else if (menuItemId == "Cifrado_duckduckgoMd5") {
+                search_click("https://duckduckgo.com/?q=md5+"+info.selectionText+"&t=h_&ia=answer");
+            }else if(menuItemId == "Cifrado_duckduckgosha512"){
+                search_click("https://duckduckgo.com/?q=sha+"+info.selectionText+"&t=h_&ia=answer");
+            }else if(menuItemId == "Cifrado_duckduckgoSha"){
+                search_click("https://duckduckgo.com/?q=sha+"+info.selectionText+"&t=h_&ia=answer");
+            }else if(menuItemId == "Cifrado_duckduckgoSha224"){
+                search_click("https://duckduckgo.com/?q=sha224+"+info.selectionText+"&t=h_&ia=answer");
+            }else if(menuItemId == "Cifrado_duckduckgoSha256"){
+                search_click("https://duckduckgo.com/?q=sha256+"+info.selectionText+"&t=h_&ia=answer");
+            }else if(menuItemId == "Cifrado_duckduckgoSha384"){
+                search_click("https://duckduckgo.com/?q=sha384+"+info.selectionText+"&t=h_&ia=answer");
             }
         }
     });
