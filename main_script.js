@@ -45,9 +45,9 @@ for(categoria in json_menus["idiomas"]["es"]){
   let contador_menu1=chrome.contextMenus.create({"title": categoria,contexts:["selection"]});
   for(seccion1 in json_menus["idiomas"]["es"][categoria]){
     if( typeof json_menus["idiomas"]["es"][categoria][seccion1] === 'object' ){
-        let contador_menu2=chrome.contextMenus.create({"id" :contador_menu1+seccion1,"title": seccion1, "parentId": contador_menu1,contexts:["selection"]});
+        let contador_menu3=chrome.contextMenus.create({"id" :contador_menu1+seccion1,"title": seccion1, "parentId": contador_menu1,contexts:["selection"]});
         for(seccion2 in json_menus["idiomas"]["es"][categoria][seccion1]){
-            let contador_menu3=chrome.contextMenus.create({"id" :contador_menu2+seccion2,"title": json_menus["idiomas"]["es"][categoria][seccion1][seccion2], "parentId": contador_menu1,contexts:["selection"]});
+            let contador_menu4=chrome.contextMenus.create({"id" :contador_menu3+seccion2,"title": json_menus["idiomas"]["es"][categoria][seccion1][seccion2], "parentId": contador_menu3,contexts:["selection"]});
         }
     }else{
         let contador_menu2=chrome.contextMenus.create({"id" :contador_menu1+seccion1,"title": json_menus["idiomas"]["es"][categoria][seccion1], "parentId": contador_menu1,contexts:["selection"]});
