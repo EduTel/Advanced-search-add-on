@@ -92,47 +92,15 @@ for(categoria in json_menus["idiomas"]["es"]){
     });
 //});
 function execute(info,tab,categoria,seccion){
-    if(categoria=='Busquedas'){
-        if(seccion == "Busquedas_wikipedia"){
-            search_click("https://duckduckgo.com/?q=%21wes+"+info.selectionText+"&t=h");
-        }else if(seccion == "Busquedas_wikipedia"){
-            search_click("https://duckduckgo.com/?q=%21translate+"+info.selectionText);
-        }else if(seccion == "Busquedas_duckduckgoNationalgeograp"){
-            search_click("https://duckduckgo.com/?q=%21natgeo+"+info.selectionText);
-        }
-    }else if(categoria=='Multimedia'){
-        if (seccion == "multimadia_googleImagenes") {
-                search_click("https://duckduckgo.com/?q=%21pictures+"+info.selectionText);
-        }else if(seccion == "Multimedia_youtube") {
-                search_click("https://duckduckgo.com/?q=%21yt+"+info.selectionText+"&t=h_");
-        }else if(seccion == "Multimedia_googleImagenes"){
-            search_click("https://duckduckgo.com/?q=%21images+"+info.selectionText+"&t=h_");
-        }else if(seccion == "Multimedia_duckduckgoImagenes"){
-            search_click("https://duckduckgo.com/?q=%21ddgi+"+info.selectionText);
-        }
-    }else if(categoria=='Herramientas'){
-        if(seccion == "Herramientas_googleMaps"){
-            search_click("https://duckduckgo.com/?q=%21gmuk+"+info.selectionText);
-        }else if(seccion == "Herramientas_duckduckgoQr"){
-            search_click("https://duckduckgo.com/?q=qrcode+"+info.selectionText+"&t=h_&ia=answer");
-        }else if(seccion == "Herramientas_duckduckgoFiglet"){
-            search_click("https://duckduckgo.com/?q=figlet+"+info.selectionText+"&t=h_&ia=answer");
-        }
-    }else if(categoria=='Cifrado'){
-        if (seccion == "Cifrado_duckduckgoHash") {
-            search_click("https://duckduckgo.com/?q=hash+"+info.selectionText+"&t=h_&ia=answer");
-        }else if (seccion == "Cifrado_duckduckgoMd5") {
-            search_click("https://duckduckgo.com/?q=md5+"+info.selectionText+"&t=h_&ia=answer");
-        }else if(seccion == "Cifrado_duckduckgosha512"){
-            search_click("https://duckduckgo.com/?q=sha512+"+info.selectionText+"&t=h_&ia=answer");
-        }else if(seccion == "Cifrado_duckduckgoSha"){
-            search_click("https://duckduckgo.com/?q=sha+"+info.selectionText+"&t=h_&ia=answer");
-        }else if(seccion == "Cifrado_duckduckgoSha224"){
-            search_click("https://duckduckgo.com/?q=sha224+"+info.selectionText+"&t=h_&ia=answer");
-        }else if(seccion == "Cifrado_duckduckgoSha256"){
-            search_click("https://duckduckgo.com/?q=sha256+"+info.selectionText+"&t=h_&ia=answer");
-        }else if(seccion == "Cifrado_duckduckgoSha384"){
-            search_click("https://duckduckgo.com/?q=sha384+"+info.selectionText+"&t=h_&ia=answer");
-        }
+    if(info.hasOwnProperty('selectionText')){
+        info=info.selectionText;
     }
+    //window.views = chrome.extension.getViews();
+    //alert(JSON.stringify(views,null,'\t')  );
+    //views.search(info,tab,categoria,seccion);
+    chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
+        if (request.greeting == "hello"){
+            sendResponse({msg: "goodbye!"});
+        }
+    });
 }

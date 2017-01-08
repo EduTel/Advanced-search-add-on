@@ -15,12 +15,18 @@
         <input type="text" value="" placeholder="Write Text"  />
         <input type="submit" value="search"/>
     </form>
+    <select id="myselect">
+        <option value="HTML">HTML</option>
+        <option value="CSS">CSS</option>
+        <option value="JavaScript">JavaScript</option>
+    </select>
     <ul class="nav nav-pills"> 
          <li class="dropdown" >
             <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Busquedas
             <span class="caret"></span></button>
-            <ul class="dropdown-menu">
-                <li><a href="#">HTML</a></li>
+            <ul class="dropdown-menu" categoria='Busquedas'>
+                <li><a href="#" onclick="execute('carros',null,'Busquedas','Busquedas_wikipedia')">HTML</a></li>
+                <li><a href="#" onclick="alert('hola')">HTML</a></li>
                 <li><a href="#">CSS</a></li>
                 <li><a href="#">JavaScript</a></li>
             </ul>
