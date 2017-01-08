@@ -137,7 +137,7 @@ function execute(info,tab,categoria,seccion){
     }
 }
 function get_menus(){
-    html_menu='';
+    html_menu='<h1>hola<h1>';
     for(categoria in json_menus["idiomas"]["es"]){
         //let contador_menu1=chrome.contextMenus.create({"title": categoria,contexts:["selection"]});
         for(seccion1 in json_menus["idiomas"]["es"][categoria]){
@@ -151,6 +151,7 @@ function get_menus(){
             }
         }
     }
+    return html_menu;
 }
 
 /*onMessage*/ 

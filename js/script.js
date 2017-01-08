@@ -2,7 +2,6 @@
 document.addEventListener("DOMContentLoaded", function(event) {
      document.querySelector('#search').addEventListener("submit", function(event){
         event.preventDefault();
-        //search("carros",null,"Busquedas","Busquedas_wikipedia");
         info="carros";
         tab="";
         categoria="Busquedas";
@@ -12,6 +11,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
         });
      });
      chrome.runtime.sendMessage({funcion: "get_menus",parametros:[]},function(response) {
-           alert( JSON.stringify(response,null,'\t') );
+           document.querySelector('#menus').innerHTML = response.return;
+           //alert( JSON.stringify(response,null,'\t') );
      });
 });
