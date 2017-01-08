@@ -11,4 +11,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
           
         });
      });
+     chrome.runtime.sendMessage({funcion: "get_menus",parametros:[]},function(response) {
+           alert( JSON.stringify(response,null,'\t') );
+     });
 });
