@@ -180,7 +180,6 @@ function get_menus(){
                                                 
                                             }else{
                                                 html_menu+=`<li><a values="${categoria+"_"+seccion1}">${json_menus["idiomas"]["es"][categoria][seccion1]}</a></li>`;
-                                                //let contador_menu2=chrome.contextMenus.create({"id" :categoria+"_"+seccion1,"title": json_menus["idiomas"]["es"][categoria][seccion1], "parentId": contador_menu1,contexts:["selection"]});
                                             }
                             contador2++;
                         }
