@@ -1,10 +1,5 @@
- $('.dropdown-toggle').dropdown();
 document.addEventListener("DOMContentLoaded", function(event) {
-     $('.dropdown-submenu a.test').on("click", function(e){
-            $(this).next('ul').toggle();
-            e.stopPropagation();
-            e.preventDefault();
-     });
+     
      document.querySelector('#search').addEventListener("submit", function(event){
         event.preventDefault();
         info="carros";
@@ -17,6 +12,12 @@ document.addEventListener("DOMContentLoaded", function(event) {
      });
      chrome.runtime.sendMessage({funcion: "get_menus",parametros:[]},function(response) {
            document.querySelector('#menus').innerHTML = response.return;
+           $('.dropdown-toggle').dropdown();
+           $('html .dropdown-submenu a.test').on("click", function(e){
+                  $(this).next('ul').toggle();
+                  e.stopPropagation();
+                  e.preventDefault();
+           });
            //alert( JSON.stringify(response,null,'\t') );
      });
 });
