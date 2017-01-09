@@ -154,19 +154,31 @@ function get_menus(){
                             }
                           
                                             if( typeof json_menus["idiomas"]["es"][categoria][seccion1] === 'object' ){
-                                                /*
+                                                
                                                 html_menu+=`<li class="dropdown-submenu">
                                                                 <p class="test" value="${seccion1}">${seccion1} <span class="caret"></span></p>
                                                                 <ul class="dropdown-menu">`;
                                                 //let contador_menu3=chrome.contextMenus.create({"id" :categoria+"_"+seccion1,"title": seccion1, "parentId": contador_menu1,contexts:["selection"]});
                                                 for(seccion2 in json_menus["idiomas"]["es"][categoria][seccion1]){
-                                                    html_menu+=`<li><p values="${seccion2}">${seccion2}</p></li>`;
+                                                     if(contador3==0){
+                                                        html_menu+=`<li class="dropdown-submenu">
+                                                                    <a class="test">${seccion1}<span class="caret"></span></a>
+                                                                    <ul class="dropdown-menu">`;
+                                                    }
+                                                    
+                                                    html_menu+=`<li><p values="${seccion1+"_"+seccion2}">${json_menus["idiomas"]["es"][categoria][seccion1][seccion2]}</p></li>`;
                                                     //let contador_menu4=chrome.contextMenus.create({"id" :seccion1+"_"+seccion2,"title": json_menus["idiomas"]["es"][categoria][seccion1][seccion2], "parentId": contador_menu3,contexts:["selection"]});
+                                                    contador3++;
                                                 }
-                                                html_menu+=` 
-                                                                </ul>
-                                                            </li>`;
-                                                */
+                                                if(contador3==0){
+                                                    html_menu+=html1;
+                                                }else{
+                                                    html_menu+=` 
+                                                                    </ul>
+                                                                </li>`;
+                                                }
+                                                contador3=0;
+                                                
                                             }else{
                                                 html_menu+=`<li><a values="${categoria+"_"+seccion1}">${json_menus["idiomas"]["es"][categoria][seccion1]}</a></li>`;
                                                 //let contador_menu2=chrome.contextMenus.create({"id" :categoria+"_"+seccion1,"title": json_menus["idiomas"]["es"][categoria][seccion1], "parentId": contador_menu1,contexts:["selection"]});
