@@ -153,10 +153,11 @@ function get_menus(){
                                             <ul class="dropdown-menu">`;
                             }
                                             if( typeof json_menus["idiomas"]["es"][categoria][seccion1] === 'object' ){
-                                                
-                                                html_menu+=`<li class="dropdown-submenu">
-                                                                <p class="test" value="${categoria+"_"+seccion1}">${seccion1} <span class="caret"></span></p>
-                                                                <ul class="dropdown-menu">`;
+                                                if(contador2==0){
+                                                    html_menu+=`<li class="dropdown-submenu">
+                                                                    <p class="test" value="${categoria+"_"+seccion1}">${seccion1} <span class="caret"></span></p>
+                                                                    <ul class="dropdown-menu">`;
+                                                }
                                                 //let contador_menu3=chrome.contextMenus.create({"id" :categoria+"_"+seccion1,"title": seccion1, "parentId": contador_menu1,contexts:["selection"]});
                                                 for(seccion2 in json_menus["idiomas"]["es"][categoria][seccion1]){
                                                      if(contador3==0){
@@ -170,7 +171,7 @@ function get_menus(){
                                                     contador3++;
                                                 }
                                                 if(contador3==0){
-                                                    html_menu+=html1;
+                                                    html_menu+=html2;
                                                 }else{
                                                     html_menu+=` 
                                                                     </ul>
