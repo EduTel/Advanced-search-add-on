@@ -22,18 +22,46 @@
         <option value="JavaScript">JavaScript</option>
     </select>
     -->
-    <divs id='menus'>
-        
+    <div class="dropdown clearfix ">
+        <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Busquedas
+            <span class="caret"></span></button>
+        <ul class="dropdown-menu dropdown-toggle" role="menu" aria-labelledby="dropdownMenu">
+            <li><a tabindex="-1" href="#">Action</a></li>
+            <li><a tabindex="-1" href="#">Another action</a></li>
+            <li><a tabindex="-1" href="#">Something else here</a></li>
+            <li class="divider"></li>
+            <li class="dropdown-submenu">
+            <a tabindex="-1" href="#">More options</a>
+            <ul class="dropdown-menu">
+                <li><a tabindex="-1" href="#">Second level link</a></li>
+                <li><a tabindex="-1" href="#">Second level link</a></li>
+                <li><a tabindex="-1" href="#">Second level link</a></li>
+                <li><a tabindex="-1" href="#">Second level link</a></li>
+                <li><a tabindex="-1" href="#">Second level link</a></li>
+            </ul>
+            </li>
+        </ul>
     </div>
     <ul class="nav nav-pills"> 
          <li class="dropdown" >
             <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Busquedas
             <span class="caret"></span></button>
-            <ul class="dropdown-menu" categoria='Busquedas'>
+            <ul class="dropdown-menu" categoria='Busquedas' role="menu" aria-labelledby="dropdownMenu">
                 <li><a href="#" onclick="execute('carros',null,'Busquedas','Busquedas_wikipedia')">HTML</a></li>
                 <li><a href="#" onclick="alert('hola')">HTML</a></li>
                 <li><a href="#">CSS</a></li>
                 <li><a href="#">JavaScript</a></li>
+                <li class="divider"></li>
+                <li class="dropdown-submenu">
+                    <a tabindex="-1" href="#">More options</a>
+                    <ul class="dropdown-menu">
+                        <li><a tabindex="-1" href="#">Second level link</a></li>
+                        <li><a tabindex="-1" href="#">Second level link</a></li>
+                        <li><a tabindex="-1" href="#">Second level link</a></li>
+                        <li><a tabindex="-1" href="#">Second level link</a></li>
+                        <li><a tabindex="-1" href="#">Second level link</a></li>
+                    </ul>
+                </li>
             </ul>
         </li>
         <li class="dropdown">
@@ -55,6 +83,10 @@
             </ul>
         </li>
     </ul>
+    
+    <divs id='menus'>
+        
+    </div>
     <!--
     <div class="bs-example"> 
         <ul class="nav nav-pills" role="tablist"> 
