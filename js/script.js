@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
         event.preventDefault();
         info="carros";
         tab="";
-        categoria="Busquedas";WW
+        categoria="Busquedas";
         seccion="Busquedas_wikipedia";
         chrome.runtime.sendMessage({funcion: "execute",parametros:[info,tab,categoria,seccion]},function(response) {
           
