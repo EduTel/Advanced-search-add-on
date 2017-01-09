@@ -140,12 +140,10 @@ function get_menus(){
     html_menu=`<div class="dropdown">
                     <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Seleccionar<span class="caret"></span></button>
                     <ul class="dropdown-menu">`;
-                    let contador1=0;
                     let contador2=0;
                     let contador3=0;
                     for(categoria in json_menus["idiomas"]["es"]){
                         html1=`<li><a value="${categoria}">${categoria}</a></li>`;
-                        //let contador_menu1=chrome.contextMenus.create({"title": categoria,contexts:["selection"]});
                         for(seccion1 in json_menus["idiomas"]["es"][categoria]){
                             if(contador2==0){
                                   html_menu+=`<li class="dropdown-submenu">
@@ -164,7 +162,6 @@ function get_menus(){
                                                                     <a class="test">${seccion1}<span class="caret"></span></a>
                                                                     <ul class="dropdown-menu">`;
                                                     }
-                                                    
                                                     html_menu+=`<li><a values="${seccion1+"_"+seccion2}">${json_menus["idiomas"]["es"][categoria][seccion1][seccion2]}</a></li>`;
                                                     contador3++;
                                                 }
