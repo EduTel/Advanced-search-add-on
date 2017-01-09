@@ -137,21 +137,36 @@ function execute(info,tab,categoria,seccion){
     }
 }
 function get_menus(){
-    html_menu='<h1>hola<h1>';
-    for(categoria in json_menus["idiomas"]["es"]){
-        //let contador_menu1=chrome.contextMenus.create({"title": categoria,contexts:["selection"]});
-        for(seccion1 in json_menus["idiomas"]["es"][categoria]){
-            if( typeof json_menus["idiomas"]["es"][categoria][seccion1] === 'object' ){
-                //let contador_menu3=chrome.contextMenus.create({"id" :categoria+"_"+seccion1,"title": seccion1, "parentId": contador_menu1,contexts:["selection"]});
-                for(seccion2 in json_menus["idiomas"]["es"][categoria][seccion1]){
-                    //let contador_menu4=chrome.contextMenus.create({"id" :seccion1+"_"+seccion2,"title": json_menus["idiomas"]["es"][categoria][seccion1][seccion2], "parentId": contador_menu3,contexts:["selection"]});
-                }
-            }else{
-                //let contador_menu2=chrome.contextMenus.create({"id" :categoria+"_"+seccion1,"title": json_menus["idiomas"]["es"][categoria][seccion1], "parentId": contador_menu1,contexts:["selection"]});
-            }
-        }
-    }
-    return html_menu;
+    html_menu=`<div class="dropdown">
+                    <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">Tutorials<span class="caret"></span></button>
+                    <ul class="dropdown-menu">`;
+                    let contador1=0;
+                    let contador2=0;
+                    let contador3=0;
+                    for(categoria in json_menus["idiomas"]["es"]){
+                        html_menu+=`<li><p value="${categoria}">${categoria}</p></li>`;
+                        //let contador_menu1=chrome.contextMenus.create({"title": categoria,contexts:["selection"]});
+                        for(seccion1 in json_menus["idiomas"]["es"][categoria]){
+                            html_menu+=`<li class="dropdown-submenu">
+                                            <p class="test">${seccion1}<span class="caret"></span></p>
+                                            <ul class="dropdown-menu">`;
+                                            if( typeof json_menus["idiomas"]["es"][categoria][seccion1] === 'object' ){
+                                                //let contador_menu3=chrome.contextMenus.create({"id" :categoria+"_"+seccion1,"title": seccion1, "parentId": contador_menu1,contexts:["selection"]});
+                                                for(seccion2 in json_menus["idiomas"]["es"][categoria][seccion1]){
+                                                    
+                                                    //let contador_menu4=chrome.contextMenus.create({"id" :seccion1+"_"+seccion2,"title": json_menus["idiomas"]["es"][categoria][seccion1][seccion2], "parentId": contador_menu3,contexts:["selection"]});
+                                                }
+                                            }else{
+                                                html_menu+=`<li><p values="${seccion1}">${seccion1}</p></li>`;
+                                                //let contador_menu2=chrome.contextMenus.create({"id" :categoria+"_"+seccion1,"title": json_menus["idiomas"]["es"][categoria][seccion1], "parentId": contador_menu1,contexts:["selection"]});
+                                            }
+                                            html_menu+=`</li>`;
+                        }
+                        html_menu+=`        </ul>
+                                       </li>`;
+                    }
+    return html_menu+`</ul> 
+             </div>`;
 }
 
 /*onMessage*/ 
