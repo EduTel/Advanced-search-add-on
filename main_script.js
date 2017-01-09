@@ -144,12 +144,12 @@ function get_menus(){
                     let contador2=0;
                     let contador3=0;
                     for(categoria in json_menus["idiomas"]["es"]){
-                        html1=`<li><p value="${categoria}">${categoria}</p></li>`;
+                        html1=`<li><a value="${categoria}">${categoria}</a></li>`;
                         //let contador_menu1=chrome.contextMenus.create({"title": categoria,contexts:["selection"]});
                         for(seccion1 in json_menus["idiomas"]["es"][categoria]){
                             if(contador2==0){
                                   html_menu+=`<li class="dropdown-submenu">
-                                            <p class="test">${categoria}<span class="caret"></span></p>
+                                            <a class="test">${categoria}<span class="caret"></span></a>
                                             <ul class="dropdown-menu">`;
                             }
                           
@@ -168,7 +168,7 @@ function get_menus(){
                                                             </li>`;
                                                 */
                                             }else{
-                                                /*html_menu+=`<li><p values="${seccion1}">${seccion1}</p></li>`;*/
+                                                html_menu+=`<li><a values="${categoria+"_"+seccion1}">${json_menus["idiomas"]["es"][categoria][seccion1]}</a></li>`;
                                                 //let contador_menu2=chrome.contextMenus.create({"id" :categoria+"_"+seccion1,"title": json_menus["idiomas"]["es"][categoria][seccion1], "parentId": contador_menu1,contexts:["selection"]});
                                             }
                             contador2++;
