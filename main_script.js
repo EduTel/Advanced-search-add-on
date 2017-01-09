@@ -138,7 +138,7 @@ function execute(info,tab,categoria,seccion){
 }
 function get_menus(){
     html_menu=`<div class="dropdown">
-                    <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Buscar<span class="caret"></span></button>
+                    <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Seleccionar<span class="caret"></span></button>
                     <ul class="dropdown-menu">`;
                     let contador1=0;
                     let contador2=0;
