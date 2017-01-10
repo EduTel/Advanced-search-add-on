@@ -27,7 +27,7 @@ var json_menus={
             }
         },
         "en":{
-             "Busquedas":{
+             "Search":{
                         "wikipedia"                 : "wikipedia",
                         "duckduckgoNationalgeograp" : "National Geographic"
                         },
@@ -36,13 +36,13 @@ var json_menus={
                         "googleImagenes"     : "Google Images",
                         "duckduckgoImagenes" : "Images Duckduckgo"
             },
-            "Herramientas":{
+            "Tools":{
                         "googleTraducir"   : "Translate",
                         "googleMaps"       : "Google Maps",
                         "duckduckgoQr"     : "Duckduckgo qrcode",
                         "duckduckgoFiglet" : "Duckduckgo Figlet",
                         "Cifrado":{
-                                    "duckduckgoHash"   : "Detectar Hash",
+                                    "duckduckgoHash"   : "Detect Hash",
                                     "duckduckgoMd5"    : "md5",
                                     "duckduckgosha512" : "sha512",
                                     "duckduckgoSha"    : "Sha",
@@ -54,6 +54,10 @@ var json_menus={
         }
     }
 };
+function get_language() {
+    languaje=window.navigator.language||navigator.browserLanguage;
+    return languaje.substring(0, 2);
+}
 
 function openInNewTab(url) {
   var win = window.open(url, '_blank');
@@ -62,11 +66,10 @@ function openInNewTab(url) {
 function search_click(info,tab){
     chrome.tabs.create({url: info});
 }
-
 for(categoria in json_menus["idiomas"]["es"]){
   console.log(categoria);
   let contador_menu1=chrome.contextMenus.create({"title": categoria,contexts:["selection"]});
-  for(seccion1 in json_menus["idiomas"]["es"][categoria]){
+  for(seccion1 in json_menus["idiomas"][get_language()][categoria]){
     if( typeof json_menus["idiomas"]["es"][categoria][seccion1] === 'object' ){
         let contador_menu3=chrome.contextMenus.create({"id" :categoria+"_"+seccion1,"title": seccion1, "parentId": contador_menu1,contexts:["selection"]});
         for(seccion2 in json_menus["idiomas"]["es"][categoria][seccion1]){
@@ -142,7 +145,7 @@ function get_menus(){
                     <ul class="dropdown-menu">`;
                     let contador2=0;
                     let contador3=0;
-                    for(categoria in json_menus["idiomas"]["es"]){
+                    for(categoria in json_menus["idiomas"][get_language()]){
                         html1=`<li><a value="${categoria}">${categoria}</a></li>`;
                         for(seccion1 in json_menus["idiomas"]["es"][categoria]){
                             if(contador2==0){
