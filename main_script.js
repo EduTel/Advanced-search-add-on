@@ -95,7 +95,7 @@ function execute(info,tab,categoria,seccion){
     if(info.hasOwnProperty('selectionText')){
         info=info.selectionText;
     }
-    if(categoria=='Busquedas'){
+    if(categoria=='Busquedas' || categoria=='Search'){
         if(seccion == "Busquedas_wikipedia"){
             search_click("https://duckduckgo.com/?q=%21wes+"+info+"&t=h");
         }else if(seccion == "Busquedas_wikipedia"){
@@ -103,7 +103,7 @@ function execute(info,tab,categoria,seccion){
         }else if(seccion == "Busquedas_duckduckgoNationalgeograp"){
             search_click("https://duckduckgo.com/?q=%21natgeo+"+info);
         }
-    }else if(categoria=='Multimedia'){
+    }else if(categoria=='Multimedia' ){
         if (seccion == "multimadia_googleImagenes") {
                 search_click("https://duckduckgo.com/?q=%21pictures+"+info);
         }else if(seccion == "Multimedia_youtube") {
