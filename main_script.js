@@ -16,7 +16,7 @@ var json_menus={
                         "duckduckgoQr"     : {"Duckduckgo qrcode":"Herramientas_duckduckgoQr"},
                         "duckduckgoFiglet" : {"Duckduckgo Figlet":"Herramientas_duckduckgoFiglet"},
                         "Cifrado":{
-                                    "duckduckgoHash"   : {"Detectar Hash":},
+                                    "duckduckgoHash"   : {"Detectar Hash":"Cifrado_duckduckgoHash"},
                                     "duckduckgoMd5"    : {"md5":"Cifrado_duckduckgoMd5"},
                                     "duckduckgosha512" : {"sha512":"Cifrado_duckduckgoSha"},
                                     "duckduckgoSha"    : {"Sha":"Cifrado_duckduckgoSha"},
@@ -44,7 +44,7 @@ var json_menus={
                         "Cifrado":{
                                     "duckduckgoHash"   : {"Detect Hash":"Cifrado_duckduckgoHash"},
                                     "duckduckgoMd5"    : {"md5":"Cifrado_duckduckgoMd5"},
-                                    "duckduckgosha512" : "{sha512":"Cifrado_duckduckgosha512"},
+                                    "duckduckgosha512" : {"sha512":"Cifrado_duckduckgosha512"},
                                     "duckduckgoSha"    : {"Sha":"Cifrado_duckduckgoSha"},
                                     "duckduckgoSha224" : {"Sha224":"Cifrado_duckduckgoSha224"},
                                     "duckduckgoSha256" : {"Sha256":"Cifrado_duckduckgoSha256"},
