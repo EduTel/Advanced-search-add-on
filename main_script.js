@@ -114,7 +114,9 @@ function execute(info,tab,categoria,seccion){
             search_click("https://duckduckgo.com/?q=%21ddgi+"+info);
         }
     }else if(categoria=='Herramientas'){
-        if(seccion == "Herramientas_googleMaps"){
+        if(seccion == "Herramientas_TraducirGoogle"){
+             search_click("https://duckduckgo.com/?q=%21gmuk+"+info);
+        }else if(seccion == "Herramientas_googleMaps"){
             search_click("https://duckduckgo.com/?q=%21gmuk+"+info);
         }else if(seccion == "Herramientas_duckduckgoQr"){
             search_click("https://duckduckgo.com/?q=qrcode+"+info+"&t=h_&ia=answer");
