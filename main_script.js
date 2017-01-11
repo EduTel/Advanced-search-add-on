@@ -16,39 +16,39 @@ var json_menus={
                         "duckduckgoQr"     : {"Duckduckgo qrcode":"Herramientas_duckduckgoQr"},
                         "duckduckgoFiglet" : {"Duckduckgo Figlet":"Herramientas_duckduckgoFiglet"},
                         "Cifrado":{
-                                    "duckduckgoHash"   : "Detectar Hash",
-                                    "duckduckgoMd5"    : "md5",
-                                    "duckduckgosha512" : "sha512",
-                                    "duckduckgoSha"    : "Sha",
-                                    "duckduckgoSha224" : "Sha224",
-                                    "duckduckgoSha256" : "Sha256",
-                                    "duckduckgoSha384" : "Sha384"
+                                    "duckduckgoHash"   : {"Detectar Hash":},
+                                    "duckduckgoMd5"    : {"md5":"Cifrado_duckduckgoMd5"},
+                                    "duckduckgosha512" : {"sha512":"Cifrado_duckduckgoSha"},
+                                    "duckduckgoSha"    : {"Sha":"Cifrado_duckduckgoSha"},
+                                    "duckduckgoSha224" :{ "Sha224":"Cifrado_duckduckgoSha224"},
+                                    "duckduckgoSha256" : {"Sha256":"Cifrado_duckduckgoSha256"},
+                                    "duckduckgoSha384" : {"Sha384":"Cifrado_duckduckgoSha384"}
                         }
             }
         },
         "en":{
              "Search":{
-                        "wikipedia"                 : "wikipedia",
-                        "duckduckgoNationalgeograp" : "National Geographic"
+                        "wikipedia"                 : {"wikipedia":"Busquedas_wikipedia"},
+                        "duckduckgoNationalgeograp" : {"National Geographic":"Busquedas_duckduckgoNationalgeograp"}
                         },
             "Multimedia":{
-                        "youtube"            : "YouTube",
-                        "googleImagenes"     : "Google Images",
-                        "duckduckgoImagenes" : "Images Duckduckgo"
+                        "youtube"            : {"YouTube":"Multimedia_youtube"},
+                        "googleImagenes"     : {"Google Images":"multimadia_googleImagenes"},
+                        "duckduckgoImagenes" : {"Images Duckduckgo":"Multimedia_duckduckgoImagenes"}
             },
             "Tools":{
-                        "googleTraducir"   : "Translate",
-                        "googleMaps"       : "Google Maps",
-                        "duckduckgoQr"     : "Duckduckgo qrcode",
-                        "duckduckgoFiglet" : "Duckduckgo Figlet",
+                        "googleTraducir"   : {"Translate":"Herramientas_TraducirGoogle"},
+                        "googleMaps"       : {"Google Maps":"Herramientas_googleMaps"},
+                        "duckduckgoQr"     : {"Duckduckgo qrcode":"Herramientas_duckduckgoQr"},
+                        "duckduckgoFiglet" : {"Duckduckgo Figlet":"Herramientas_duckduckgoFiglet"},
                         "Cifrado":{
-                                    "duckduckgoHash"   : "Detect Hash",
-                                    "duckduckgoMd5"    : "md5",
-                                    "duckduckgosha512" : "sha512",
-                                    "duckduckgoSha"    : "Sha",
-                                    "duckduckgoSha224" : "Sha224",
-                                    "duckduckgoSha256" : "Sha256",
-                                    "duckduckgoSha384" : "Sha384"
+                                    "duckduckgoHash"   : {"Detect Hash":"Cifrado_duckduckgoHash"},
+                                    "duckduckgoMd5"    : {"md5":"Cifrado_duckduckgoMd5"},
+                                    "duckduckgosha512" : "{sha512":"Cifrado_duckduckgosha512"},
+                                    "duckduckgoSha"    : {"Sha":"Cifrado_duckduckgoSha"},
+                                    "duckduckgoSha224" : {"Sha224":"Cifrado_duckduckgoSha224"},
+                                    "duckduckgoSha256" : {"Sha256":"Cifrado_duckduckgoSha256"},
+                                    "duckduckgoSha384" : {"Sha384":"Cifrado_duckduckgoSha384"}
                         }
             }
         }
@@ -95,50 +95,43 @@ function execute(info,tab,categoria,seccion){
     if(info.hasOwnProperty('selectionText')){
         info=info.selectionText;
     }
-    if(categoria=='Busquedas' || categoria=='Search'){
-        if(seccion == "Busquedas_wikipedia"){
-            search_click("https://duckduckgo.com/?q=%21wes+"+info+"&t=h");
-        }else if(seccion == "Busquedas_wikipedia"){
-            search_click("https://duckduckgo.com/?q=%21translate+"+info);
-        }else if(seccion == "Busquedas_duckduckgoNationalgeograp"){
-            search_click("https://duckduckgo.com/?q=%21natgeo+"+info);
-        }
-    }else if(categoria=='Multimedia' ){
-        if (seccion == "multimadia_googleImagenes") {
-                search_click("https://duckduckgo.com/?q=%21pictures+"+info);
-        }else if(seccion == "Multimedia_youtube") {
-                search_click("https://duckduckgo.com/?q=%21yt+"+info+"&t=h_");
-        }else if(seccion == "Multimedia_googleImagenes"){
-            search_click("https://duckduckgo.com/?q=%21images+"+info+"&t=h_");
-        }else if(seccion == "Multimedia_duckduckgoImagenes"){
-            search_click("https://duckduckgo.com/?q=%21ddgi+"+info);
-        }
-    }else if(categoria=='Herramientas'){
-        if(seccion == "Herramientas_TraducirGoogle"){
-             search_click("https://duckduckgo.com/?q=%21gmuk+"+info);
-        }else if(seccion == "Herramientas_googleMaps"){
+    
+    if(seccion == "Busquedas_wikipedia"){
+        search_click("https://duckduckgo.com/?q=%21wes+"+info+"&t=h");
+    }else if(seccion == "Busquedas_wikipedia"){
+        search_click("https://duckduckgo.com/?q=%21translate+"+info);
+    }else if(seccion == "Busquedas_duckduckgoNationalgeograp"){
+        search_click("https://duckduckgo.com/?q=%21natgeo+"+info);
+    }else if (seccion == "multimadia_googleImagenes") {
+            search_click("https://duckduckgo.com/?q=%21pictures+"+info);
+    }else if(seccion == "Multimedia_youtube") {
+            search_click("https://duckduckgo.com/?q=%21yt+"+info+"&t=h_");
+    }else if(seccion == "Multimedia_googleImagenes"){
+        search_click("https://duckduckgo.com/?q=%21images+"+info+"&t=h_");
+    }else if(seccion == "Multimedia_duckduckgoImagenes"){
+        search_click("https://duckduckgo.com/?q=%21ddgi+"+info);
+    }else if(seccion == "Herramientas_TraducirGoogle"){
             search_click("https://duckduckgo.com/?q=%21gmuk+"+info);
-        }else if(seccion == "Herramientas_duckduckgoQr"){
-            search_click("https://duckduckgo.com/?q=qrcode+"+info+"&t=h_&ia=answer");
-        }else if(seccion == "Herramientas_duckduckgoFiglet"){
-            search_click("https://duckduckgo.com/?q=figlet+"+info+"&t=h_&ia=answer");
-        }
-    }else if(categoria=='Cifrado'){
-        if (seccion == "Cifrado_duckduckgoHash") {
-            search_click("https://duckduckgo.com/?q=hash+"+info+"&t=h_&ia=answer");
-        }else if (seccion == "Cifrado_duckduckgoMd5") {
-            search_click("https://duckduckgo.com/?q=md5+"+info+"&t=h_&ia=answer");
-        }else if(seccion == "Cifrado_duckduckgosha512"){
-            search_click("https://duckduckgo.com/?q=sha512+"+info+"&t=h_&ia=answer");
-        }else if(seccion == "Cifrado_duckduckgoSha"){
-            search_click("https://duckduckgo.com/?q=sha+"+info+"&t=h_&ia=answer");
-        }else if(seccion == "Cifrado_duckduckgoSha224"){
-            search_click("https://duckduckgo.com/?q=sha224+"+info+"&t=h_&ia=answer");
-        }else if(seccion == "Cifrado_duckduckgoSha256"){
-            search_click("https://duckduckgo.com/?q=sha256+"+info+"&t=h_&ia=answer");
-        }else if(seccion == "Cifrado_duckduckgoSha384"){
-            search_click("https://duckduckgo.com/?q=sha384+"+info+"&t=h_&ia=answer");
-        }
+    }else if(seccion == "Herramientas_googleMaps"){
+        search_click("https://duckduckgo.com/?q=%21gmuk+"+info);
+    }else if(seccion == "Herramientas_duckduckgoQr"){
+        search_click("https://duckduckgo.com/?q=qrcode+"+info+"&t=h_&ia=answer");
+    }else if(seccion == "Herramientas_duckduckgoFiglet"){
+        search_click("https://duckduckgo.com/?q=figlet+"+info+"&t=h_&ia=answer");
+    }else if (seccion == "Cifrado_duckduckgoHash") {
+        search_click("https://duckduckgo.com/?q=hash+"+info+"&t=h_&ia=answer");
+    }else if (seccion == "Cifrado_duckduckgoMd5") {
+        search_click("https://duckduckgo.com/?q=md5+"+info+"&t=h_&ia=answer");
+    }else if(seccion == "Cifrado_duckduckgosha512"){
+        search_click("https://duckduckgo.com/?q=sha512+"+info+"&t=h_&ia=answer");
+    }else if(seccion == "Cifrado_duckduckgoSha"){
+        search_click("https://duckduckgo.com/?q=sha+"+info+"&t=h_&ia=answer");
+    }else if(seccion == "Cifrado_duckduckgoSha224"){
+        search_click("https://duckduckgo.com/?q=sha224+"+info+"&t=h_&ia=answer");
+    }else if(seccion == "Cifrado_duckduckgoSha256"){
+        search_click("https://duckduckgo.com/?q=sha256+"+info+"&t=h_&ia=answer");
+    }else if(seccion == "Cifrado_duckduckgoSha384"){
+        search_click("https://duckduckgo.com/?q=sha384+"+info+"&t=h_&ia=answer");
     }
 }
 function get_menus(){
