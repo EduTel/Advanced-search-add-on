@@ -2,19 +2,19 @@ var json_menus={
     "idiomas":{
         "es":{
              "Busquedas":{
-                        "wikipedia"                 : "wikipedia",
-                        "duckduckgoNationalgeograp" : "National Geographic"
+                        "wikipedia"                 : {"wikipedia":"Busquedas_wikipedia"},
+                        "duckduckgoNationalgeograp" : {"National Geographic": "Busquedas_duckduckgoNationalgeograp"}
                         },
             "Multimedia":{
-                        "youtube"            : "YouTube",
-                        "googleImagenes"     : "Imagenes en Google",
-                        "duckduckgoImagenes" : "Imagenes en Duckduckgo"
+                        "youtube"            : {"YouTube":"Multimedia_youtube"},
+                        "googleImagenes"     : {"Imagenes en Google":"multimadia_googleImagenes"},
+                        "duckduckgoImagenes" : {"Imagenes en Duckduckgo":"Multimedia_duckduckgoImagenes"}
             },
             "Herramientas":{
-                        "googleTraducir"   : "Traducir",
-                        "googleMaps"       : "Google Maps",
-                        "duckduckgoQr"     : "Duckduckgo qrcode",
-                        "duckduckgoFiglet" : "Duckduckgo Figlet",
+                        "googleTraducir"   : {"Traducir":"Herramientas_TraducirGoogle"},
+                        "googleMaps"       : {"Google Maps":"Herramientas_googleMaps"},
+                        "duckduckgoQr"     : {"Duckduckgo qrcode":"Herramientas_duckduckgoQr"},
+                        "duckduckgoFiglet" : {"Duckduckgo Figlet":"Herramientas_duckduckgoFiglet"},
                         "Cifrado":{
                                     "duckduckgoHash"   : "Detectar Hash",
                                     "duckduckgoMd5"    : "md5",
