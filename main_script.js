@@ -71,7 +71,7 @@ var idioma_get=get_language();
 for(categoria in json_menus["idiomas"][idioma_get]){
   console.log(categoria);
   let contador_menu1=chrome.contextMenus.create({"title": categoria,contexts:["selection"]});
-  for(seccion1 in json_menus["idiomas"][idioma_get)][categoria]){
+  for(seccion1 in json_menus["idiomas"][idioma_get][categoria]){
     if( typeof json_menus["idiomas"]["es"][categoria][seccion1] === 'object' ){
         //let contador_menu3=chrome.contextMenus.create({"id" :categoria+"_"+seccion1,"title": seccion1, "parentId": contador_menu1,contexts:["selection"]});
         //for(seccion2 in json_menus["idiomas"]["es"][categoria][seccion1]){
