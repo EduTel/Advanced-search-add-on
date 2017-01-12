@@ -79,8 +79,6 @@ for(categoria in json_menus["idiomas"][idioma_get]){
             if( typeof json_menus["idiomas"]["es"][categoria][seccion1][seccion2] === 'object' ){
 
                 let contador_menu3=chrome.contextMenus.create({"id" :Object.values(json_menus["idiomas"]["es"][categoria][seccion1][seccion2])[0].toString(),"title": Object.keys(json_menus["idiomas"]["es"][categoria][seccion1][seccion2])[0].toString(), "parentId": contador_menu2,contexts:["selection"]});
-                //console.log("if"+seccion2);
-                //console.log("__"+Object.keys(json_menus["idiomas"]["es"][categoria][seccion1][seccion2]));
             }else{
                 console.log("else"+seccion2);
                 //for(seccion2 in json_menus["idiomas"]["es"][categoria][seccion1]){  
