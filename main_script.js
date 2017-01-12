@@ -66,18 +66,22 @@ function openInNewTab(url) {
 function search_click(info,tab){
     chrome.tabs.create({url: info});
 }
-for(categoria in json_menus["idiomas"]["es"]){
+console.log("lenguaje______________"+get_language()+"________________");
+var idioma_get=get_language();
+for(categoria in json_menus["idiomas"][idioma_get]){
   console.log(categoria);
   let contador_menu1=chrome.contextMenus.create({"title": categoria,contexts:["selection"]});
-  for(seccion1 in json_menus["idiomas"][get_language()][categoria]){
+  for(seccion1 in json_menus["idiomas"][idioma_get)][categoria]){
     if( typeof json_menus["idiomas"]["es"][categoria][seccion1] === 'object' ){
-        let contador_menu3=chrome.contextMenus.create({"id" :categoria+"_"+seccion1,"title": seccion1, "parentId": contador_menu1,contexts:["selection"]});
-        for(seccion2 in json_menus["idiomas"]["es"][categoria][seccion1]){
-            let contador_menu4=chrome.contextMenus.create({"id" :seccion1+"_"+seccion2,"title": json_menus["idiomas"]["es"][categoria][seccion1][seccion2], "parentId": contador_menu3,contexts:["selection"]});
-        }
+        //let contador_menu3=chrome.contextMenus.create({"id" :categoria+"_"+seccion1,"title": seccion1, "parentId": contador_menu1,contexts:["selection"]});
+        //for(seccion2 in json_menus["idiomas"]["es"][categoria][seccion1]){
+        //    let contador_menu4=chrome.contextMenus.create({"id" :seccion1+"_"+seccion2,"title": json_menus["idiomas"]["es"][categoria][seccion1][seccion2], "parentId": contador_menu3,contexts:["selection"]});
+        //}
     }else{
+        //for(seccion2 in json_menus["idiomas"]["es"][categoria][seccion1]){  
+        //}
         let contador_menu2=chrome.contextMenus.create({"id" :categoria+"_"+seccion1,"title": json_menus["idiomas"]["es"][categoria][seccion1], "parentId": contador_menu1,contexts:["selection"]});
-        console.log(seccion1);
+        console.warn("___\t"+json_menus["idiomas"]["es"][categoria][seccion1]+"___\t")
     }
   }
 }
@@ -95,7 +99,6 @@ function execute(info,tab,categoria,seccion){
     if(info.hasOwnProperty('selectionText')){
         info=info.selectionText;
     }
-    
     if(seccion == "Busquedas_wikipedia"){
         search_click("https://duckduckgo.com/?q=%21wes+"+info+"&t=h");
     }else if(seccion == "Busquedas_wikipedia"){
