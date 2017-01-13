@@ -154,6 +154,7 @@ function get_menus(){
                       <ul class="dropdown-menu">`;
                       let contador2  = 0;
                       let contador3  = 0;
+                      let contador4  = 0;
                       var idioma_get = get_language();
                       for(categoria in json_menus["idiomas"][idioma_get]){
                           html1=`<li><a value="${categoria}">${categoria}__1</a></li>`;
@@ -185,13 +186,16 @@ function get_menus(){
                                                                     <ul class="dropdown-menu">`;
                                                 }
                                             }
-                                            for(seccion2 in json_menus["idiomas"][idioma_get][categoria][seccion1][seccion2]){
-                                                 contador4++;
-                                            }
+                                            //console.log("______2"+seccion2);
+                                            //for(seccion3 in json_menus["idiomas"][idioma_get][categoria][seccion1][seccion2]){
+                                            //    html4=`<li><a value="${seccion3}">${seccion3}__3</a></li>`;
+                                            //    console.log("__________________3"+seccion3);
+                                            //    contador4++;
+                                            //}
                                             /*
                                             html_menu+=`<li><a values="${seccion1+"_"+seccion2}">${json_menus["idiomas"][idioma_get][categoria][seccion1][seccion2]}</a></li>`;
                                             */
-                                            if(contador3==0){ html_menu+=html2;}else{ html_menu+=`</ul></li>`;};
+                                            if(contador4==0){ html_menu+=html3;}else{ html_menu+=`</ul></li>`;};
                                             contador4=0;
                                             contador3++;
                                         }else{}
