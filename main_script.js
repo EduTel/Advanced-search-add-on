@@ -73,11 +73,9 @@ for(categoria in json_menus["idiomas"][idioma_get]){
   let contador_menu1=chrome.contextMenus.create({"title": categoria,contexts:["selection"]});
   for(seccion1 in json_menus["idiomas"][idioma_get][categoria]){
     if( typeof json_menus["idiomas"]["es"][categoria][seccion1] === 'object' ){
-        console.warn("___\t"+seccion1+"___\t");
-        let contador_menu2=chrome.contextMenus.create({"id" :categoria+"_"+seccion1,"title": seccion1, "parentId": contador_menu1,contexts:["selection"]});
+        let contador_menu2=chrome.contextMenus.create({"id" :categoria+"_"+seccion1,"title": Object.values(json_menus["idiomas"]["es"][categoria][seccion1])[0].toString(), "parentId": contador_menu1,contexts:["selection"]});
         for(seccion2 in json_menus["idiomas"]["es"][categoria][seccion1]){
             if( typeof json_menus["idiomas"]["es"][categoria][seccion1][seccion2] === 'object' ){
-
                 let contador_menu3=chrome.contextMenus.create({"id" :Object.values(json_menus["idiomas"]["es"][categoria][seccion1][seccion2])[0].toString(),"title": Object.keys(json_menus["idiomas"]["es"][categoria][seccion1][seccion2])[0].toString(), "parentId": contador_menu2,contexts:["selection"]});
             }else{
                 console.log("else"+seccion2);
@@ -91,7 +89,8 @@ for(categoria in json_menus["idiomas"][idioma_get]){
     }else{
         //for(seccion2 in json_menus["idiomas"]["es"][categoria][seccion1]){  
         //}
-        let contador_menu2=chrome.contextMenus.create({"id" :categoria+"_"+seccion1,"title": json_menus["idiomas"]["es"][categoria][seccion1], "parentId": contador_menu1,contexts:["selection"]});
+        //console.warn("___\t"+json_menus["idiomas"]["es"][categoria][seccion1]+"___\t");
+        //let contador_menu2=chrome.contextMenus.create({"id" :categoria+"_"+seccion1,"title": json_menus["idiomas"]["es"][categoria][seccion1], "parentId": contador_menu1,contexts:["selection"]});
         
     }
   }
