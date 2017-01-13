@@ -150,56 +150,48 @@ function execute(info,tab,categoria,seccion){
 }
 function get_menus(){
     html_menu=`<div class="dropdown">
-                    <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Seleccionar<span class="caret"></span></button>
-                    <ul class="dropdown-menu">`;
-                    let contador2=0;
-                    let contador3=0;
-                    for(categoria in json_menus["idiomas"][get_language()]){
-                        html1=`<li><a value="${categoria}">${categoria}</a></li>`;
-                        for(seccion1 in json_menus["idiomas"]["es"][categoria]){
-                            if(contador2==0){
-                                  html_menu+=`<li class="dropdown-submenu">
-                                            <a class="test">${categoria}<span class="caret"></span></a>
-                                            <ul class="dropdown-menu">`;
-                            }
-                                            if( typeof json_menus["idiomas"]["es"][categoria][seccion1] === 'object' ){
-                                                if(contador2==0){
-                                                    html_menu+=`<li class="dropdown-submenu">
-                                                                    <a class="test" value="${categoria+"_"+seccion1}">${seccion1} <span class="caret"></span></a>
-                                                                    <ul class="dropdown-menu">`;
-                                                }
-                                                for(seccion2 in json_menus["idiomas"]["es"][categoria][seccion1]){
-                                                     if(contador3==0){
-                                                        html_menu+=`<li class="dropdown-submenu">
-                                                                    <a class="test">${seccion1}<span class="caret"></span></a>
-                                                                    <ul class="dropdown-menu">`;
-                                                    }
-                                                    html_menu+=`<li><a values="${seccion1+"_"+seccion2}">${json_menus["idiomas"]["es"][categoria][seccion1][seccion2]}</a></li>`;
-                                                    contador3++;
-                                                }
-                                                if(contador3==0){
-                                                    html_menu+=html2;
-                                                }else{
-                                                    html_menu+=` 
-                                                                    </ul>
-                                                                </li>`;
-                                                }
-                                                contador3=0;
-                                                
-                                            }else{
-                                                html_menu+=`<li><a values="${categoria+"_"+seccion1}">${json_menus["idiomas"]["es"][categoria][seccion1]}</a></li>`;
-                                            }
-                            contador2++;
-                        }
-                        if(contador2==0){
-                            html_menu+=html1;
-                        }else{
-                            html_menu+=` 
-                                            </ul>
-                                        </li>`;
-                        }
-                        contador2=0;
-                    }
+                      <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Seleccionar<span class="caret"></span></button>
+                      <ul class="dropdown-menu">`;
+                      let contador2  = 0;
+                      let contador3  = 0;
+                      var idioma_get = get_language();
+                      for(categoria in json_menus["idiomas"][idioma_get]){
+                          html1=`<li><a value="${categoria}">${categoria}__1</a></li>`;
+                          for(seccion1 in json_menus["idiomas"][idioma_get][categoria]){
+                                if( typeof json_menus["idiomas"][idioma_get][categoria][seccion1] === 'object' ){
+                                    html2=`<li><a value="${seccion1}">${seccion1}__2</a></li>`;
+                                    if(contador2==0 ){
+                                        if(Object.keys(json_menus["idiomas"][idioma_get][categoria][seccion1])[0].toString()=="function"){
+                                            html_menu+=`<li class="dropdown-submenu">
+                                                            <a class="test" value="${categoria}">${categoria}__1 <span class="caret"></span></a>
+                                                                <ul class="dropdown-menu">`;
+                                        }else{
+                                            html_menu+=`<li class="dropdown-submenu">
+                                                            <a class="test" value="${seccion1}">${seccion1}__1.1 <span class="caret"></span></a>
+                                                            <ul class="dropdown-menu"></ul></li>`;
+                                        }
+                                    }
+                                    for(seccion2 in json_menus["idiomas"][idioma_get][categoria][seccion1]){
+                                        if( typeof json_menus["idiomas"][idioma_get][categoria][seccion1][seccion2] === 'object' ){
+                                         /*
+                                        if(contador3==0){
+                                            html_menu+=`<li class="dropdown-submenu">
+                                                        <a class="test">${seccion1}<span class="caret"></span></a>
+                                                        <ul class="dropdown-menu">`;
+                                        }
+                                        html_menu+=`<li><a values="${seccion1+"_"+seccion2}">${json_menus["idiomas"][idioma_get][categoria][seccion1][seccion2]}</a></li>`;
+                                        */
+                                        }else{}
+                                        contador3++;
+                                    }
+                                    if(contador3==0){ html_menu+=html2;}else{ html_menu+=`</ul></li>`;}
+                                    contador3=0;
+                                    contador2++;
+                                }else{}
+                          }
+                          if(contador2==0){html_menu+=html1;}else{ html_menu+=`</ul></li>`;}
+                          contador2=0;
+                      }
     return html_menu+`</ul> 
              </div>`;
 }
