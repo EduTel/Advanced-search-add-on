@@ -2,27 +2,27 @@ var json_menus={
     "idiomas":{
         "es":{
              "Busquedas":{
-                        "wikipedia"                 : {"wikipedia":"Busquedas_wikipedia"},
-                        "duckduckgoNationalgeograp" : {"National Geographic": "Busquedas_duckduckgoNationalgeograp"}
+                        "wikipedia"           : {"function":"Busquedas_wikipedia"},
+                        "National Geographic" : {"function": "Busquedas_duckduckgoNationalgeograp"}
                         },
             "Multimedia":{
-                        "youtube"            : {"YouTube":"Multimedia_youtube"},
-                        "googleImagenes"     : {"Imagenes en Google":"multimadia_googleImagenes"},
-                        "duckduckgoImagenes" : {"Imagenes en Duckduckgo":"Multimedia_duckduckgoImagenes"}
+                        "YouTube"                : {"function":"Multimedia_youtube"},
+                        "Imagenes en Google"     : {"function":"multimadia_googleImagenes"},
+                        "Imagenes en Duckduckgo" : {"function":"Multimedia_duckduckgoImagenes"}
             },
             "Herramientas":{
-                        "googleTraducir"   : {"Traducir":"Herramientas_TraducirGoogle"},
-                        "googleMaps"       : {"Google Maps":"Herramientas_googleMaps"},
-                        "duckduckgoQr"     : {"Duckduckgo qrcode":"Herramientas_duckduckgoQr"},
-                        "duckduckgoFiglet" : {"Duckduckgo Figlet":"Herramientas_duckduckgoFiglet"},
+                        "Traducir"          : {"function":"Herramientas_TraducirGoogle"},
+                        "Google Maps"       : {"function":"Herramientas_googleMaps"},
+                        "Duckduckgo qrcode" : {"function":"Herramientas_duckduckgoQr"},
+                        "Duckduckgo Figlet" : {"function":"Herramientas_duckduckgoFiglet"},
                         "Cifrado":{
-                                    "duckduckgoHash"   : {"Detectar Hash":"Cifrado_duckduckgoHash"},
-                                    "duckduckgoMd5"    : {"md5":"Cifrado_duckduckgoMd5"},
-                                    "duckduckgosha512" : {"sha512":"Cifrado_duckduckgoSha"},
-                                    "duckduckgoSha"    : {"Sha":"Cifrado_duckduckgoSha"},
-                                    "duckduckgoSha224" :{ "Sha224":"Cifrado_duckduckgoSha224"},
-                                    "duckduckgoSha256" : {"Sha256":"Cifrado_duckduckgoSha256"},
-                                    "duckduckgoSha384" : {"Sha384":"Cifrado_duckduckgoSha384"}
+                                    "Detectar Hash"   : {"function":"Cifrado_duckduckgoHash"},
+                                    "md5"    : {"function":"Cifrado_duckduckgoMd5"},
+                                    "sha512" : {"function":"Cifrado_duckduckgoSha"},
+                                    "Sha"    : {"function":"Cifrado_duckduckgoSha"},
+                                    "Sha224" :{ "function":"Cifrado_duckduckgoSha224"},
+                                    "Sha256" : {"function":"Cifrado_duckduckgoSha256"},
+                                    "Sha384" : {"function":"Cifrado_duckduckgoSha384"}
                         }
             }
         },
@@ -73,7 +73,7 @@ for(categoria in json_menus["idiomas"][idioma_get]){
   let contador_menu1=chrome.contextMenus.create({"title": categoria,contexts:["selection"]});
   for(seccion1 in json_menus["idiomas"][idioma_get][categoria]){
     if( typeof json_menus["idiomas"]["es"][categoria][seccion1] === 'object' ){
-        let contador_menu2=chrome.contextMenus.create({"id" :categoria+"_"+seccion1,"title": Object.keys(json_menus["idiomas"]["es"][categoria][seccion1])[0].toString(), "parentId": contador_menu1,contexts:["selection"]});
+        let contador_menu2=chrome.contextMenus.create({"id" :categoria+"_"+seccion1,"title": seccion1, "parentId": contador_menu1,contexts:["selection"]});
         for(seccion2 in json_menus["idiomas"]["es"][categoria][seccion1]){
             if( typeof json_menus["idiomas"]["es"][categoria][seccion1][seccion2] === 'object' ){
                 let contador_menu3=chrome.contextMenus.create({"id" :Object.values(json_menus["idiomas"]["es"][categoria][seccion1][seccion2])[0].toString(),"title": Object.keys(json_menus["idiomas"]["es"][categoria][seccion1][seccion2])[0].toString(), "parentId": contador_menu2,contexts:["selection"]});
