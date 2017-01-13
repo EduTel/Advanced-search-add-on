@@ -17,38 +17,38 @@ var json_menus={
                         "Duckduckgo Figlet" : {"function":"Herramientas_duckduckgoFiglet"},
                         "Cifrado":{
                                     "Detectar Hash"   : {"function":"Cifrado_duckduckgoHash"},
-                                    "md5"    : {"function":"Cifrado_duckduckgoMd5"},
-                                    "sha512" : {"function":"Cifrado_duckduckgoSha"},
-                                    "Sha"    : {"function":"Cifrado_duckduckgoSha"},
-                                    "Sha224" :{ "function":"Cifrado_duckduckgoSha224"},
-                                    "Sha256" : {"function":"Cifrado_duckduckgoSha256"},
-                                    "Sha384" : {"function":"Cifrado_duckduckgoSha384"}
+                                    "md5"             : {"function":"Cifrado_duckduckgoMd5"},
+                                    "sha512"          : {"function":"Cifrado_duckduckgosha512"},
+                                    "Sha"             : {"function":"Cifrado_duckduckgoSha"},
+                                    "Sha224"          :{ "function":"Cifrado_duckduckgoSha224"},
+                                    "Sha256"          : {"function":"Cifrado_duckduckgoSha256"},
+                                    "Sha384"          : {"function":"Cifrado_duckduckgoSha384"}
                         }
             }
         },
         "en":{
              "Search":{
-                        "wikipedia"                 : {"wikipedia":"Busquedas_wikipedia"},
-                        "duckduckgoNationalgeograp" : {"National Geographic":"Busquedas_duckduckgoNationalgeograp"}
+                        "wikipedia"             : {"function":"Busquedas_wikipedia"},
+                        "National Geographic"   : {"function":"Busquedas_duckduckgoNationalgeograp"}
                         },
             "Multimedia":{
-                        "youtube"            : {"YouTube":"Multimedia_youtube"},
-                        "googleImagenes"     : {"Google Images":"multimadia_googleImagenes"},
-                        "duckduckgoImagenes" : {"Images Duckduckgo":"Multimedia_duckduckgoImagenes"}
+                        "youtube"           : {"function":"Multimedia_youtube"},
+                        "Google Images"     : {"function":"multimadia_googleImagenes"},
+                        "Images Duckduckgo" : {"function":"Multimedia_duckduckgoImagenes"}
             },
             "Tools":{
-                        "googleTraducir"   : {"Translate":"Herramientas_TraducirGoogle"},
-                        "googleMaps"       : {"Google Maps":"Herramientas_googleMaps"},
-                        "duckduckgoQr"     : {"Duckduckgo qrcode":"Herramientas_duckduckgoQr"},
-                        "duckduckgoFiglet" : {"Duckduckgo Figlet":"Herramientas_duckduckgoFiglet"},
+                        "Translate"         : {"function":"Herramientas_TraducirGoogle"},
+                        "Google Maps"       : {"function":"Herramientas_googleMaps"},
+                        "Duckduckgo qrcode" : {"function":"Herramientas_duckduckgoQr"},
+                        "Duckduckgo Figlet" : {"function":"Herramientas_duckduckgoFiglet"},
                         "Cifrado":{
-                                    "duckduckgoHash"   : {"Detect Hash":"Cifrado_duckduckgoHash"},
-                                    "duckduckgoMd5"    : {"md5":"Cifrado_duckduckgoMd5"},
-                                    "duckduckgosha512" : {"sha512":"Cifrado_duckduckgosha512"},
-                                    "duckduckgoSha"    : {"Sha":"Cifrado_duckduckgoSha"},
-                                    "duckduckgoSha224" : {"Sha224":"Cifrado_duckduckgoSha224"},
-                                    "duckduckgoSha256" : {"Sha256":"Cifrado_duckduckgoSha256"},
-                                    "duckduckgoSha384" : {"Sha384":"Cifrado_duckduckgoSha384"}
+                                    "Detect Hash"   : {"function":"Cifrado_duckduckgoHash"},
+                                    "md5"           : {"function":"Cifrado_duckduckgoMd5"},
+                                    "sha512"        : {"function":"Cifrado_duckduckgosha512"},
+                                    "Sha"           : {"function":"Cifrado_duckduckgoSha"},
+                                    "Sha224"        : {"function":"Cifrado_duckduckgoSha224"},
+                                    "Sha256"        : {"function":"Cifrado_duckduckgoSha256"},
+                                    "Sha384"        : {"function":"Cifrado_duckduckgoSha384"}
                         }
             }
         }
@@ -69,28 +69,29 @@ function search_click(info,tab){
 console.log("lenguaje______________"+get_language()+"________________");
 var idioma_get=get_language();
 for(categoria in json_menus["idiomas"][idioma_get]){
-  console.log(categoria);
   let contador_menu1=chrome.contextMenus.create({"title": categoria,contexts:["selection"]});
   for(seccion1 in json_menus["idiomas"][idioma_get][categoria]){
-    if( typeof json_menus["idiomas"]["es"][categoria][seccion1] === 'object' ){
-        let contador_menu2=chrome.contextMenus.create({"id" :categoria+"_"+seccion1,"title": seccion1, "parentId": contador_menu1,contexts:["selection"]});
-        for(seccion2 in json_menus["idiomas"]["es"][categoria][seccion1]){
-            if( typeof json_menus["idiomas"]["es"][categoria][seccion1][seccion2] === 'object' ){
-                let contador_menu3=chrome.contextMenus.create({"id" :Object.values(json_menus["idiomas"]["es"][categoria][seccion1][seccion2])[0].toString(),"title": Object.keys(json_menus["idiomas"]["es"][categoria][seccion1][seccion2])[0].toString(), "parentId": contador_menu2,contexts:["selection"]});
+    if( typeof json_menus["idiomas"][idioma_get][categoria][seccion1] === 'object' ){
+        if(Object.keys(json_menus["idiomas"][idioma_get][categoria][seccion1])[0].toString()=="function"){
+            contador_menu2=chrome.contextMenus.create({"id" :Object.values(json_menus["idiomas"][idioma_get][categoria][seccion1])[0].toString(),"title": seccion1, "parentId": contador_menu1,contexts:["selection"]});
+        }else{
+            contador_menu2=chrome.contextMenus.create({"id" :seccion1,"title": seccion1, "parentId": contador_menu1,contexts:["selection"]});
+        }
+        for(seccion2 in json_menus["idiomas"][idioma_get][categoria][seccion1]){
+            console.log(JSON.stringify(json_menus["idiomas"][idioma_get][categoria][seccion1]));
+            console.log("____"+seccion2);
+            if( typeof json_menus["idiomas"][idioma_get][categoria][seccion1][seccion2] === 'object' ){
+                console.log("____________________________entro IF");
+                 if(Object.keys(json_menus["idiomas"][idioma_get][categoria][seccion1][seccion2])[0].toString()=="function"){
+                    contador_menu4=chrome.contextMenus.create({"id" :Object.values(json_menus["idiomas"][idioma_get][categoria][seccion1][seccion2])[0].toString(),"title": seccion2, "parentId": contador_menu2,contexts:["selection"]});
+                 }else{
+                    contador_menu2=chrome.contextMenus.create({"id" :seccion1,"title": seccion1, "parentId": contador_menu1,contexts:["selection"]});
+                 }
             }else{
-                console.log("else"+seccion2);
-                //for(seccion2 in json_menus["idiomas"]["es"][categoria][seccion1]){  
-                //}
-                //let contador_menu2=chrome.contextMenus.create({"id" :categoria+"_"+seccion1,"title": json_menus["idiomas"]["es"][categoria][seccion1], "parentId": contador_menu1,contexts:["selection"]});
-                
+        
             }
-            //let contador_menu4=chrome.contextMenus.create({"id" :seccion1+"_"+seccion2,"title": json_menus["idiomas"]["es"][categoria][seccion1][seccion2], "parentId": contador_menu3,contexts:["selection"]});
         }
     }else{
-        //for(seccion2 in json_menus["idiomas"]["es"][categoria][seccion1]){  
-        //}
-        //console.warn("___\t"+json_menus["idiomas"]["es"][categoria][seccion1]+"___\t");
-        //let contador_menu2=chrome.contextMenus.create({"id" :categoria+"_"+seccion1,"title": json_menus["idiomas"]["es"][categoria][seccion1], "parentId": contador_menu1,contexts:["selection"]});
         
     }
   }
