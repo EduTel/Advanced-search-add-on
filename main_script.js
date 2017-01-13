@@ -163,40 +163,40 @@ function get_menus(){
                                     if(contador2==0 ){
                                         if(Object.keys(json_menus["idiomas"][idioma_get][categoria][seccion1])[0].toString()=="function"){
                                             html_menu+=`<li class="dropdown-submenu">
-                                                            <a class="test" value="${categoria}">${categoria}__1 <span class="caret"></span></a>
+                                                            <a class="test" value="${categoria}">${categoria}__1.1 <span class="caret"></span></a>
                                                                 <ul class="dropdown-menu">`;
                                         }else{
                                             html_menu+=`<li class="dropdown-submenu">
-                                                            <a class="test" value="${seccion1}">${seccion1}__1.1 <span class="caret"></span></a>
+                                                            <a class="test" value="${seccion1}">${seccion1}__1.2 <span class="caret"></span></a>
                                                             <ul class="dropdown-menu">`;
                                         }
                                     }
-                                    contador3++;
                                     for(seccion2 in json_menus["idiomas"][idioma_get][categoria][seccion1]){
                                         if( typeof json_menus["idiomas"][idioma_get][categoria][seccion1][seccion2] === 'object' ){
+                                            html3=`<li><a value="${seccion2}">${seccion2}__3</a></li>`;
                                             if(contador3==0 ){
                                                 if(Object.keys(json_menus["idiomas"][idioma_get][categoria][seccion1][seccion2])[0].toString()=="function"){
                                                     html_menu+=`<li class="dropdown-submenu">
-                                                                    <a class="test" value="${seccion1}">${seccion1}__1 <span class="caret"></span></a>
+                                                                    <a class="test" value="${seccion1}">${seccion1}__2.1 <span class="caret"></span></a>
                                                                         <ul class="dropdown-menu">`;
                                                 }else{
                                                     html_menu+=`<li class="dropdown-submenu">
-                                                                    <a class="test" value="${seccion2}">${seccion2}__1.1 <span class="caret"></span></a>
+                                                                    <a class="test" value="${seccion2}">${seccion2}__2.2 <span class="caret"></span></a>
                                                                     <ul class="dropdown-menu">`;
                                                 }
                                             }
+                                            for(seccion2 in json_menus["idiomas"][idioma_get][categoria][seccion1][seccion2]){
+                                                 contador4++;
+                                            }
                                             /*
-                                            if(contador3==0){
-                                                html_menu+=`<li class="dropdown-submenu">
-                                                            <a class="test">${seccion1}<span class="caret"></span></a>
-                                                            <ul class="dropdown-menu">`;
-                                        
                                             html_menu+=`<li><a values="${seccion1+"_"+seccion2}">${json_menus["idiomas"][idioma_get][categoria][seccion1][seccion2]}</a></li>`;
                                             */
+                                            if(contador3==0){ html_menu+=html2;}else{ html_menu+=`</ul></li>`;};
+                                            contador4=0;
                                             contador3++;
                                         }else{}
                                     }
-                                    if(contador3==0){ html_menu+=html2;}else{ html_menu+=`</ul></li>==`;}
+                                    if(contador3==0){ html_menu+=html2;}else{ html_menu+=`</ul></li>`;}
                                     contador3=0;
                                     contador2++;
                                 }else{}
