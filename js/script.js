@@ -19,9 +19,13 @@ document.addEventListener("DOMContentLoaded", function(event) {
                   e.preventDefault();
                   $(this).trigger("change");
            });
-           $('#menus > div > ul a').on("click", function(e){
+           $('#menus > div li:not(.dropdown-submenu)').on("click", function(e){
+                  //console.log($(this).parent("li"));
+                  //if ( $(this).parent("li").children("a > input[type='radio']").length > 0 ) {
+                  console.log(this);
                   e.stopPropagation;
-                  $(this).parent("li").find("input[type='radio']").attr('checked', true);;
+                  $(this).find("a > input[type='radio']").attr('checked', true);
+                  //}
            });
      });
 });
