@@ -87,13 +87,9 @@ for(categoria in json_menus["idiomas"][idioma_get]){
                  }else{
                     contador_menu2=chrome.contextMenus.create({"id" :seccion1,"title": seccion1, "parentId": contador_menu1,contexts:["selection"]});
                  }
-            }else{
-        
-            }
+            }else{}
         }
-    }else{
-        
-    }
+    }else{}
   }
 }
 //chrome.runtime.onInstalled.addListener(function() {
@@ -101,8 +97,6 @@ for(categoria in json_menus["idiomas"][idioma_get]){
     chrome.contextMenus.onClicked.addListener(function(info, tab) {
         menuItemId=info.menuItemId;
         prefijo=menuItemId.split('_',1);
-        //alert(JSON.stringify(info,null,"\t"));
-        //alert(JSON.stringify(prefijo,null,"\t"));
         execute(info,tab,prefijo,menuItemId);
     });
 //});

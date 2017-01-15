@@ -17,7 +17,11 @@ document.addEventListener("DOMContentLoaded", function(event) {
                   $(this).next('ul').toggle();
                   e.stopPropagation();
                   e.preventDefault();
+                  $(this).trigger("change");
            });
-           //alert( JSON.stringify(response,null,'\t') );
+           $('#menus > div > ul a').on("click", function(e){
+                  e.stopPropagation;
+                  $(this).parent("li").find("input[type='radio']").attr('checked', true);;
+           });
      });
 });
