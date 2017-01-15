@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", function(event) {
-     
+     /*conectarse con el background js para hacer las busquedas*/
      document.querySelector('#search').addEventListener("submit", function(event){
         event.preventDefault();
         info="carros";

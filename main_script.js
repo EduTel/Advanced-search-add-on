@@ -150,51 +150,46 @@ function execute(info,tab,categoria,seccion){
 }
 function get_menus(){
     html_menu=`<div class="dropdown">
-                      <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Seleccionar<span class="caret"></span></button>
+                      <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown"><span class="caret"></span> Seleccionar</button>
                       <ul class="dropdown-menu">`;
                       let contador2  = 0;
                       let contador3  = 0;
                       let contador4  = 0;
                       var idioma_get = get_language();
                       for(categoria in json_menus["idiomas"][idioma_get]){
-                          html1=`<li><a value="${categoria}">${categoria}__1</a></li>`;
+                          html1=`<li><a value="${categoria}">${categoria}__1 <input name='selected' type="radio"></a></li>`;
                           for(seccion1 in json_menus["idiomas"][idioma_get][categoria]){
                                 if( typeof json_menus["idiomas"][idioma_get][categoria][seccion1] === 'object' ){
-                                    html2=`<li><a value="${seccion1}">${seccion1}__2</a></li>`;
+                                    html2=`<li><a value="${seccion1}">${seccion1}<input name='selected' type="radio"></a></li>`;
                                     if(contador2==0 ){
                                         if(Object.keys(json_menus["idiomas"][idioma_get][categoria][seccion1])[0].toString()=="function"){
                                             html_menu+=`<li class="dropdown-submenu">
-                                                            <a class="test" value="${categoria}">${categoria}__1.1 <span class="caret"></span></a>
+                                                            <a class="test" value="${categoria}">${categoria} <!--<span class="caret"></span>--></a>
                                                                 <ul class="dropdown-menu">`;
                                         }else{
+                                            /*
                                             html_menu+=`<li class="dropdown-submenu">
                                                             <a class="test" value="${seccion1}">${seccion1}__1.2 <span class="caret"></span></a>
                                                             <ul class="dropdown-menu">`;
+                                            */
                                         }
                                     }
                                     for(seccion2 in json_menus["idiomas"][idioma_get][categoria][seccion1]){
                                         if( typeof json_menus["idiomas"][idioma_get][categoria][seccion1][seccion2] === 'object' ){
-                                            html3=`<li><a value="${seccion2}">${seccion2}__3</a></li>`;
+                                            html3=`<li><a value="${seccion2}">${seccion2}<input name='selected' type="radio"></a></li>`;
                                             if(contador3==0 ){
                                                 if(Object.keys(json_menus["idiomas"][idioma_get][categoria][seccion1][seccion2])[0].toString()=="function"){
                                                     html_menu+=`<li class="dropdown-submenu">
-                                                                    <a class="test" value="${seccion1}">${seccion1}__2.1 <span class="caret"></span></a>
+                                                                    <a class="test" value="${seccion1}">${seccion1} <!--<span class="caret"></span>--></a>
                                                                         <ul class="dropdown-menu">`;
                                                 }else{
+                                                    /*
                                                     html_menu+=`<li class="dropdown-submenu">
                                                                     <a class="test" value="${seccion2}">${seccion2}__2.2 <span class="caret"></span></a>
                                                                     <ul class="dropdown-menu">`;
+                                                    */
                                                 }
                                             }
-                                            //console.log("______2"+seccion2);
-                                            //for(seccion3 in json_menus["idiomas"][idioma_get][categoria][seccion1][seccion2]){
-                                            //    html4=`<li><a value="${seccion3}">${seccion3}__3</a></li>`;
-                                            //    console.log("__________________3"+seccion3);
-                                            //    contador4++;
-                                            //}
-                                            /*
-                                            html_menu+=`<li><a values="${seccion1+"_"+seccion2}">${json_menus["idiomas"][idioma_get][categoria][seccion1][seccion2]}</a></li>`;
-                                            */
                                             if(contador4==0){ html_menu+=html3;}else{ html_menu+=`</ul></li>`;};
                                             contador4=0;
                                             contador3++;

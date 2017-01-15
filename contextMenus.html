@@ -11,11 +11,15 @@
     <link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
 <body>
-    <form id='search' action="" method="post" >
-        <input type="text" value="" placeholder="Write Text"  />
-        <input type="submit" value="search"/>
-    </form>
-    
+    <div class='contenedor'>
+        <form id='search' action="" method="post" >
+            <input type="text" value="" placeholder="Write Text"  />
+            <input type="submit" value="search"/>
+        </form>
+        <divs id='menus'>
+        </div>
+    <div>
+    <!--
     <div class="dropdown">
         <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">Tutorials
         <span class="caret"></span></button>
@@ -51,128 +55,6 @@
                 </ul>
             </li>
         </ul>
-    </div>
-    
-    
-    <!--
-    <div class="dropdown">
-        <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Seleccionar<span class="caret"></span></button>
-        <ul class="dropdown-menu">
-            <li class="dropdown-submenu">
-                <a class="test">Busquedas<span class="caret"></span></a>
-                <ul class="dropdown-menu">
-                    <li><a values="Busquedas_wikipedia">wikipedia</a></li>
-                    <li><a values="Busquedas_duckduckgoNationalgeograp">National Geographic</a></li> 
-                </ul>
-            </li>
-            <li class="dropdown-submenu">
-                <a class="test">Multimedia<span class="caret"></span></a>
-                <ul class="dropdown-menu">
-                    <li><a values="Multimedia_youtube">YouTube</a></li>
-                    <li><a values="Multimedia_googleImagenes">Imagenes en Google</a></li>
-                    <li><a values="Multimedia_duckduckgoImagenes">Imagenes en Duckduckgo</></li> 
-                </ul>
-            </li>
-            <li class="dropdown-submenu">
-                <a class="test">Herramientas<span class="caret"></span></a>
-                <ul class="dropdown-menu">
-                    <li><a values="Herramientas_googleTraducir">Traducir</a></li>
-                    <li><a values="Herramientas_googleMaps">Google Maps</a></li>
-                    <li><a values="Herramientas_duckduckgoQr">Duckduckgo qrcode</a></li>
-                    <li><a values="Herramientas_duckduckgoFiglet">Duckduckgo Figlet</a></li> 
-                </ul>
-            </li>
-        </ul> 
-    </div>
-    -->
-
-    <!--
-    <ul class="nav nav-pills"> 
-         <li class="dropdown" >
-            <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Busquedas
-            <span class="caret"></span></button>
-            <ul class="dropdown-menu" categoria='Busquedas' role="menu" aria-labelledby="dropdownMenu">
-                <li><a href="#" onclick="execute('carros',null,'Busquedas','Busquedas_wikipedia')">HTML</a></li>
-                <li><a href="#" onclick="alert('hola')">HTML</a></li>
-                <li><a href="#">CSS</a></li>
-                <li><a href="#">JavaScript</a></li>
-                <li class="divider"></li>
-                <li class="dropdown-submenu">
-                    <a tabindex="-1" href="#">More options</a>
-                    <ul class="dropdown-menu">
-                        <li><a tabindex="-1" href="#">Second level link</a></li>
-                        <li><a tabindex="-1" href="#">Second level link</a></li>
-                        <li><a tabindex="-1" href="#">Second level link</a></li>
-                        <li><a tabindex="-1" href="#">Second level link</a></li>
-                        <li><a tabindex="-1" href="#">Second level link</a></li>
-                    </ul>
-                </li>
-            </ul>
-        </li>
-        <li class="dropdown">
-            <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Multimedia
-            <span class="caret"></span></button>
-            <ul class="dropdown-menu">
-                <li><a href="#">HTML</a></li>
-                <li><a href="#">CSS</a></li>
-                <li><a href="#">JavaScript</a></li>
-            </ul>
-        </div>
-        <li class="dropdown">
-            <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Herramientas
-            <span class="caret"></span></button>
-            <ul class="dropdown-menu">
-                <li><a href="#">HTML</a></li>
-                <li><a href="#">CSS</a></li>
-                <li><a href="#">JavaScript</a></li>
-            </ul>
-        </li>
-    </ul>
-    -->
-    <divs id='menus'>
-        
-    </div>
-    <!--
-    <div class="bs-example"> 
-        <ul class="nav nav-pills" role="tablist"> 
-            <li role="presentation" class="dropdown"> 
-                <a href="#" class="dropdown-toggle" id="drop4" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> 
-                    Dropdown 
-                    <span class="caret"></span> 
-                </a> 
-                <ul class="dropdown-menu" id="menu1" aria-labelledby="drop4"> 
-                    <li><a href="#">Action</a></li> 
-                    <li><a href="#">Another action</a></li> 
-                    <li><a href="#">Something else here</a></li> 
-                    <li role="separator" class="divider"></li> 
-                    <li><a href="#">Separated link</a></li> 
-                </ul> 
-            </li> 
-            <li role="presentation" class="dropdown"> 
-                <a href="#" class="dropdown-toggle" id="drop5" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> 
-                    Dropdown <span class="caret"></span> 
-                </a> 
-                <ul class="dropdown-menu" id="menu2" aria-labelledby="drop5"> 
-                    <li><a href="#">Action</a></li> 
-                    <li><a href="#">Another action</a></li> 
-                    <li><a href="#">Something else here</a></li> 
-                    <li role="separator" class="divider"></li> 
-                    <li><a href="#">Separated link</a></li> 
-                </ul> 
-            </li> 
-            <li role="presentation" class="dropdown"> 
-                <a href="#" class="dropdown-toggle" id="drop6" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> 
-                    Dropdown <span class="caret"></span> 
-                </a> 
-                <ul class="dropdown-menu" id="menu3" aria-labelledby="drop6"> 
-                    <li><a href="#">Action</a></li> 
-                    <li><a href="#">Another action</a></li> 
-                    <li><a href="#">Something else here</a></li> 
-                    <li role="separator" class="divider"></li> 
-                    <li><a href="#">Separated link</a></li> 
-                </ul> 
-            </li> 
-        </ul> 
     </div>
     -->
 </body>
