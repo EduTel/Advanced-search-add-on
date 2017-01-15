@@ -1,15 +1,19 @@
 body{
-    width: 500px;
+    width: 450px;
     height: 300px;
 }
 .contenedor {
     float: right;
 }
+divs#menus {
+    float: right;
+}
 /**************************dropdown */
 .dropdown-menu {
-    min-width: 140px;
     font-size: 12px;
+    margin-left: -29px;
     max-width: 140px;
+    min-width: 140px;
 }
 .dropdown-menu input[type="radio"] {
     margin: 2px;
