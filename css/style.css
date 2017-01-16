@@ -3,10 +3,23 @@ body{
     height: 300px;
 }
 .contenedor {
-    float: right;
+    float        : right;
+    margin-right :  5px;
 }
 divs#menus {
     float: right;
+}
+#labelSearchText{
+    font-size   : 20px;
+    font-weight : bold;
+    margin-left : 5px;
+    margin-right: 5px;
+    text-align  : center;
+}
+form#search {
+    text-align: right;
+    padding-left: 5px;
+    padding-bottom: 2px;
 }
 /**************************dropdown */
 .dropdown-menu {

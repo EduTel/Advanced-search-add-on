@@ -97,10 +97,10 @@ for(categoria in json_menus["idiomas"][idioma_get]){
     chrome.contextMenus.onClicked.addListener(function(info, tab) {
         menuItemId=info.menuItemId;
         prefijo=menuItemId.split('_',1);
-        execute(info,tab,prefijo,menuItemId);
+        execute(info,tab,menuItemId);
     });
 //});
-function execute(info,tab,categoria,seccion){
+function execute(info,tab,seccion){
     if(info.hasOwnProperty('selectionText')){
         info=info.selectionText;
     }
@@ -119,7 +119,7 @@ function execute(info,tab,categoria,seccion){
     }else if(seccion == "Multimedia_duckduckgoImagenes"){
         search_click("https://duckduckgo.com/?q=%21ddgi+"+info);
     }else if(seccion == "Herramientas_TraducirGoogle"){
-            search_click("https://duckduckgo.com/?q=%21gmuk+"+info);
+            search_click("https://duckduckgo.com/?q=%21translate+"+info);
     }else if(seccion == "Herramientas_googleMaps"){
         search_click("https://duckduckgo.com/?q=%21gmuk+"+info);
     }else if(seccion == "Herramientas_duckduckgoQr"){
@@ -151,10 +151,10 @@ function get_menus(){
                       let contador4  = 0;
                       var idioma_get = get_language();
                       for(categoria in json_menus["idiomas"][idioma_get]){
-                          html1=`<li><a value="${categoria}">${categoria}__1 <input name='selected' type="radio"></a></li>`;
+                          //html1=`<li><a value="${categoria}">${categoria}__1 <input name='selected' type="radio"></a></li>`;
                           for(seccion1 in json_menus["idiomas"][idioma_get][categoria]){
                                 if( typeof json_menus["idiomas"][idioma_get][categoria][seccion1] === 'object' ){
-                                    html2=`<li><a value="${seccion1}">${seccion1}<input name='selected' type="radio"></a></li>`;
+                                    html2=`<li><a value="${Object.values(json_menus["idiomas"][idioma_get][categoria][seccion1])[0].toString()}">${seccion1}<input name='selected' type="radio"></a></li>`;
                                     if(contador2==0 ){
                                         if(Object.keys(json_menus["idiomas"][idioma_get][categoria][seccion1])[0].toString()=="function"){
                                             html_menu+=`<li class="dropdown-submenu">
@@ -170,7 +170,7 @@ function get_menus(){
                                     }
                                     for(seccion2 in json_menus["idiomas"][idioma_get][categoria][seccion1]){
                                         if( typeof json_menus["idiomas"][idioma_get][categoria][seccion1][seccion2] === 'object' ){
-                                            html3=`<li><a value="${seccion2}">${seccion2}<input name='selected' type="radio"></a></li>`;
+                                            html3=`<li><a value="${Object.values(json_menus["idiomas"][idioma_get][categoria][seccion1][seccion2])[0].toString()}">${seccion2}<input name='selected' type="radio"></a></li>`;
                                             if(contador3==0 ){
                                                 if(Object.keys(json_menus["idiomas"][idioma_get][categoria][seccion1][seccion2])[0].toString()=="function"){
                                                     html_menu+=`<li class="dropdown-submenu">
@@ -213,5 +213,4 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
             sendResponse({return: data});
         }
     }
-    
 });
