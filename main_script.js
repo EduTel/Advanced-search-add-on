@@ -41,7 +41,7 @@ var json_menus={
                         "Google Maps"       : {"function":"Herramientas_googleMaps"},
                         "Duckduckgo qrcode" : {"function":"Herramientas_duckduckgoQr"},
                         "Duckduckgo Figlet" : {"function":"Herramientas_duckduckgoFiglet"},
-                        "Cifrado":{
+                        "Encrypted":{
                                     "Detect Hash"   : {"function":"Cifrado_duckduckgoHash"},
                                     "md5"           : {"function":"Cifrado_duckduckgoMd5"},
                                     "sha512"        : {"function":"Cifrado_duckduckgosha512"},
