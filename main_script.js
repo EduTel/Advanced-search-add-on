@@ -69,13 +69,13 @@ function search_click(info,tab){
 console.log("lenguaje______________"+get_language()+"________________");
 var idioma_get=get_language();
 for(categoria in json_menus["idiomas"][idioma_get]){
-  let contador_menu1=chrome.contextMenus.create({"title": categoria,contexts:["selection"]});
+  let contador_menu1=chrome.contextMenus.create({"title": categoria,type: "radio",contexts:["all"]});
   for(seccion1 in json_menus["idiomas"][idioma_get][categoria]){
     if( typeof json_menus["idiomas"][idioma_get][categoria][seccion1] === 'object' ){
         if(Object.keys(json_menus["idiomas"][idioma_get][categoria][seccion1])[0].toString()=="function"){
-            contador_menu2=chrome.contextMenus.create({"id" :Object.values(json_menus["idiomas"][idioma_get][categoria][seccion1])[0].toString(),"title": seccion1, "parentId": contador_menu1,contexts:["selection"]});
+            contador_menu2=chrome.contextMenus.create({"id" :Object.values(json_menus["idiomas"][idioma_get][categoria][seccion1])[0].toString(),"title": seccion1, "parentId": contador_menu1,type: "radio",contexts:["all"]});
         }else{
-            contador_menu2=chrome.contextMenus.create({"id" :seccion1,"title": seccion1, "parentId": contador_menu1,contexts:["selection"]});
+            contador_menu2=chrome.contextMenus.create({"id" :seccion1,"title": seccion1, "parentId": contador_menu1,type: "radio",contexts:["all"]});
         }
         for(seccion2 in json_menus["idiomas"][idioma_get][categoria][seccion1]){
             console.log(JSON.stringify(json_menus["idiomas"][idioma_get][categoria][seccion1]));
@@ -83,9 +83,9 @@ for(categoria in json_menus["idiomas"][idioma_get]){
             if( typeof json_menus["idiomas"][idioma_get][categoria][seccion1][seccion2] === 'object' ){
                 console.log("____________________________entro IF");
                  if(Object.keys(json_menus["idiomas"][idioma_get][categoria][seccion1][seccion2])[0].toString()=="function"){
-                    contador_menu4=chrome.contextMenus.create({"id" :Object.values(json_menus["idiomas"][idioma_get][categoria][seccion1][seccion2])[0].toString(),"title": seccion2, "parentId": contador_menu2,contexts:["selection"]});
+                    contador_menu4=chrome.contextMenus.create({"id" :Object.values(json_menus["idiomas"][idioma_get][categoria][seccion1][seccion2])[0].toString(),"title": seccion2, "parentId": contador_menu2,type: "radio",contexts:["all"]});
                  }else{
-                    contador_menu2=chrome.contextMenus.create({"id" :seccion1,"title": seccion1, "parentId": contador_menu1,contexts:["selection"]});
+                    contador_menu2=chrome.contextMenus.create({"id" :seccion1,"title": seccion1, "parentId": contador_menu1,type: "radio",contexts:["all"]});
                  }
             }else{}
         }
